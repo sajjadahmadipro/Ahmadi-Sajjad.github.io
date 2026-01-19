@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" class="bg-black scroll-smooth snap-none md:snap-y md:snap-mandatory overflow-x-hidden [&::-webkit-scrollbar]:hidden text-white">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
 </head>
 
-<body class="justify-center flex">
+<body class="justify-center flex overflow-x-auto">
     <div class="video-background">
         <video autoplay muted loop id="bg-video">
             <source src="Resources/DarkMode.mp4" type="video/mp4">
@@ -22,12 +21,12 @@
         </video>
     </div>
 
-    <header class="box_header flex justify-between items-center w-full fixed z-1000">
-        <a href="#home" class="flex w-[95px] justify-between gap-x-[2px] cursor-pointer">
-            <img id="img_profile" class="w-[34px] h-[34px] rounded-[60px]" src="Resources/Profile pic.jpg" alt="icon">
-            <h2 class="mt-[3px]">Ahmadi</h2>
+    <header class="box_header py-2.5 px-8 md:py-[20px] md:text-[22px] flex justify-between items-center fixed z-1000 min-w-[340px] overflow-x-hidden">
+        <a href="#home" class="flex w-[95px] md:w-[128px] justify-between gap-x-[2px] cursor-pointer">
+            <img id="img_profile" class="w-[34px] aspect-square md:w-[44px] rounded-[60px]" src="Resources/Profile pic.jpg" alt="icon">
+            <h2 class="mt-[3px] md:mt-[3px]">Ahmadi</h2>
         </a>
-        <nav class="w-[280px] justify-between flex">
+        <nav class="hidden md:flex w-[280px] md:w-[358px] justify-between">
             <a href="#projects" class="">Projects</a>
             <a href="#bio" class="">About Me</a>
             <a href="#contact" class="">Contact</a> 
@@ -35,51 +34,60 @@
         </nav>
     </header>
 
-    <nav class="dot-navigation">
+    <nav class="fixed top-1/2 right-6 transform -translate-y-1/2 hidden lg:flex flex-col gap-3 z-50">
         <a href="#home" class="dot active" data-section="home"></a>
         <a href="#projects" class="dot" data-section="projects"></a>
         <a href="#bio" class="dot" data-section="bio"></a>
         <a href="#contact" class="dot" data-section="contact"></a>
     </nav>
 
-    <div class="flex items-center flex-col mt-[10px] justify-between h-max">
+    <div class="flex items-center flex-col mt-[10px] justify-between h-max shrink-0">
 
-        <main class="gap-[100px] flex md flex-col justify-between"> 
-            <section id="home" class="flex h-[100vh] justify-center flex-col items-center">
-                <div class="box w-[60vw] h-[70vh] flex flex-col items-center justify-center fade-in transition-all duration-300 ease-in-out hover:scale-101">
-                    <div class="flex flex-row gap-x-[15px] pl-[15px]">
-                        <img class="w-[370px] h-[420px] border rounded-[15px] border-[#fdfdfd]" src="Resources/person.png" alt="pic">
+        <main class="gap-[100px] flex flex-col justify-between"> 
+            <section id="home" class="flex md:h-[calc(100vh-200px)] mt-[60px] md:justify-center flex-col items-center lg:snap-start lg:snap-always">
+                <div class="box lg:min-h-[458px] md:min-h-[1128px] md:max-w-[655px] lg:max-w-[990px] lg:w-[970px] lg:mr-[36px] min-w-[342px]
+                            overflow-x-hidden shrink-0 w-[88vw] mt-17 md:mt-[550px] lg:mt-[400px] min-[536px]:h-[886px] h-[822px] min-[401px]:h-[836px] sm:h-[1080px] md:h-[70vh]
+                            lg:h-[550px] flex flex-col items-center justify-start fade-in transition-all duration-300 ease-in-out hover:scale-101">
+
+                    <div class="flex flex-row gap-x-[15px] lg:mt-[12px] lg:gap-x-[25px]">
+                        <img class=" hidden lg:mt-[25px] lg:ml-[14px] lg:block w-[380px] h-[440px] border rounded-[15px] border-[#fdfdfd]" src="Resources/person.png" alt="pic">
                         
-                        <div class="flex flex-col intro-section">
-                            <div class="flex justify-center text-[40px] w-[400px] items-center">
-                                <h3 class="relative top-[20px]">Hey</h3>
-                                <img class="h-[60px] w-[60px] relative ml-[8px] top-[20px]" src="Resources/wave-white.png" alt="wave">
-                                <h3 class="self-center relative top-[20px]">, I'm Sajjad...</h3>
-                            </div>
-
-                            <div class="mt-[24px] ml-[27px] flex flex-row">
-                                <span class="text-[20px]">Currently a junior</span>
-                                <img class="w-[250px] relative left-[-3px]" src="Resources/softDev.png" alt="softDev">
+                        <div class="flex mt-[-6px] flex-col opacity-0 translate-y-5 animate-[reveal-section_1s_ease-out_forwards_0.3s]">
+                            
+                            <img class="lg:hidden md:mt-[12px] min-w-[306px] w-[75vw] aspect-square max-w-[589px] object-cover border rounded-[15px] border-[#fdfdfd] mx-auto" src="Resources/person.png" alt="pic">
+                            
+                            <div class="flex max-[400px]:ml-[15px] justify-start lg:justify-start text-[32px] sm:text-[48px] md:text-[40px] w-full max-w-[500px] items-center">
+                                <h3 class="relative top-[20px] lg:top-[12px]">Hey</h3>
+                                <img class="w-[52px] aspect-square sm:w-[62px] md:w-[60px] relative ml-[8px] top-[20px] lg:top-[12px]" src="Resources/wave-white.png" alt="wave">
+                                <h3 class="self-center relative top-[20px] lg:top-[12px]">, I'm Sajjad...</h3>
                             </div>
                             
-                            <div class="w-[330px] ml-[27px] mt-[10px]">
-                                <p class="text-[14px] text-justify ">I am currently working on my web development 
+                            <div class="min-w-[340px] max-[400px]:ml-[15px] w-[78vw] max-w-[404px] md:max-w-[550px] sm:w-[70vw] shrink-0 sm:max-w-[477px] flex flex-col lg:flex-row justify-between lg:justify-start">
+                                <div class="mt-[24px] lg:mt-[12px] flex flex-row">
+                                    <span class="text-[24px] sm:text-[28px]">Currently a junior</span>
+                                </div>
+                                
+                                <img class="w-[236px] lg:w-[300px] lg:relative lg:top-[12px] sm:w-[280px] md:w-[350px] self-end" src="Resources/softDev.png" alt="softDev">
+                            </div>
+                            
+                            <div class="min-w-[332px] max-[400px]:ml-[18px] w-[79vw] max-w-[589px] lg:max-w-[530px]">
+                                <p class="text-[18px] sm:text-[22px] lg:text-[22px] lg:mt-[18px] text-justify">I am currently working on my web development 
                                     skills and learning the ropes of the industry. I'm open to opportunities where
                                     I can contribute to a team, tackle real challenges, and continue to learn from
                                     hands-on experience. I'm especially eager to be in an environment that encourages
                                     growth and allows me to constantly improve my craft...</p>
                             </div>
                                 
-                            <div class="ml-[35px] flex flex-row justify-between w-[316px] mt-[30px]">
-                                <button class="border border-white p-[40px] pt-[6px] pb-[8px] rounded-[10px] hover:bg-[#ffffff] hover:text-black hover:border-[#000000] transition-all duration-300 ease-in-out">Hire Me</button>
-                                <a href="projects_section.html" target="_self" class="border border-white p-[20px] pt-[6px] pb-[8px] rounded-[10px] hover:bg-[#ffffff] hover:text-black hover:border-[#000000] transition-all duration-300 ease-in-out">See My Projects</a>
+                            <div class="flex max-[400px]:ml-[15px] min-[400px]:self-end md:self-center flex-row justify-between min-w-[332px] w-[79vw] max-w-[330px] md:max-w-[550px] mt-[16px] md:mt-[30px] sm:text-[16px] md:text-[22px] lg:text-[20px] lg:justify-start gap-x-[15px] lg:gap-x-[30px]">
+                                <button class="border p-[12px] border-white md:p-[40px] md:pt-[16px] md:pb-[16px] rounded-[10px] hover:bg-[#ffffff] hover:text-black hover:border-[#000000] transition-all duration-300 ease-in-out">Download Resume</button>
+                                <a href="projects_section.html" target="_self" class="border max-[400px]:pl-[10px] p-[12px] px-[17px] border-white md:p-[40px] md:pt-[16px] md:pb-[16px] rounded-[10px] hover:bg-[#ffffff] hover:text-black hover:border-[#000000] transition-all duration-300 ease-in-out">See My Projects</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="projects" class="flex h-[100vh] justify-center flex-col items-center">
+            <!-- <section id="projects" class="flex h-screen justify-center flex-col items-center md:snap-start md:snap-always">
                 <div class="flex flex-row mt-[60px] gap-3 border-y border-white rounded-[25px] py-2.5 w-[72vw] overflow-x-auto items-center">
                     <div class="box_LMS w-[21vw] h-[71vh] flex items-center justify-center flex-col fade-in transition-all duration-300 ease-in-out hover:scale-102">
                         <div class="w-[17vw] h-[25vh] mb-[13px]">
@@ -91,9 +99,9 @@
                             <p class="font">
                                 This project is a comprehensive Library Management System (LMS)
                                 developed using C++ and the Qt framework to provide a robust, cross-platform 
-                                desktop application... <!-- for modern library operations. It is designed to efficiently
+                                desktop application...  for modern library operations. It is designed to efficiently
                                 manage the library's collection, patrons, and all lending and reservation 
-                                processes through a user-friendly graphical interface. -->
+                                processes through a user-friendly graphical interface.
                             </p>
                         </div>
 
@@ -118,9 +126,9 @@
                     </div>
                 </div>
 
-            </section>
+            </section> -->
 
-            <section id="bio" class="flex h-[100vh] justify-center flex-col items-center">
+            <!-- <section id="bio" class="flex h-screen justify-center flex-col items-center md:snap-start md:snap-always">
                 <div class="w-[75vw] flex flex-row items-center justify-center gap-20 h-[80vh] box mt-[70px]">
                     <div class="h-[70vh] w-[25vw] flex flex-col justify-center ml-[50px]">
                         <h1 class="font-bold relative right-[35px] text-[23px] bottom-[14px]">From Theory to Impact</h1>
@@ -137,9 +145,9 @@
                         <img class="rounded-[10px] w-[35vw] h-[68vh]" src="Resources/img_aboutme.png" alt="img_aboutme">
                     </div>
                 </div>
-            </section>
+            </section> -->
 
-            <section id="contact" class="flex h-[100vh] w-full justify-end flex-col items-center">
+            <!-- <section id="contact" class="flex h-screen w-full justify-end flex-col items-center md:snap-start md:snap-always">
                 <div class="flex flex-row justify-evenly w-full h-[60vh] box !m-[0px] !rounded-b-[0px] items-center gap-2">
                     <div class="flex flex-col border-y rounded-[15px] h-[44vh] border-white w-[33vw] pl-[2vw] hover:scale-101 transition-all ease-in-out duration-200">
                         <ul>
@@ -197,8 +205,7 @@
                     </div>
                 </div>
                 <div id="copy-notification" class="notification-bar">Copied!</div>
-            </section>
-
+            </section> -->
         </main>
 
     </div>
