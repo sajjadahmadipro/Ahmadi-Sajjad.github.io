@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahamdi Sajjad</title>
-    <script src="Portfolio.js"></script>
+    <script src="Portfolio.js" defer></script>
     <link rel="stylesheet" href="Portfolio.css">
     <link rel="icon" href="Resources/favicon.png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -13,26 +13,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="justify-center flex overflow-x-auto">
-    <div class="video-background">
+<body class="bg-transparent text-white antialiased overflow-x-hidden selection:bg-white selection:text-black font-['Montserrat']">
+    
+    <div class="fixed inset-0 w-full h-full z-0 opacity-50 pointer-events-none">
         <video autoplay muted loop id="bg-video">
-            <source src="Resources/DarkMode.mp4" type="video/mp4">
+            <source id="background" src="Resources/DarkMode.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
-    <header class="box_header py-2.5 px-8 md:py-[20px] md:text-[22px] flex justify-between items-center fixed z-1000 min-w-[340px] overflow-x-hidden">
-        <a href="#home" class="flex w-[95px] md:w-[128px] justify-between gap-x-[2px] cursor-pointer">
-            <img id="img_profile" class="w-[34px] aspect-square md:w-[44px] rounded-[60px]" src="Resources/Profile pic.jpg" alt="icon">
-            <h2 class="mt-[3px] md:mt-[3px]">Ahmadi</h2>
+    <header class="fixed top-0 left-0 z-1000 w-full overflow-x-hidden rounded-b-4xl flex items-center justify-between py-2.5 px-4 lg:py-2 2xl:px-6 2xl:py-5 lg:text-[14px] 2xl:text-[20px] md:py-5 
+                md:text-2xl bg-linear-to-br from-white/10 to-white/0 backdrop-blur-[10px] 
+                supports-backdrop-filter:backdrop-blur-[10px] rounded-b-xl border border-white/20 shadow-white/5 text-white text-shadow-[1px_1px_2px_rgba(0,0,0,0.2)]">
+        <a href="#home" class="flex justify-between gap-x-2 cursor-pointer">
+            <img id="img_profile" class="w-9 aspect-square md:w-11 lg:w-8 rounded-full" src="Resources/Profile pic.jpg" alt="icon">
+            <h2 class="mt-2 md:mt-2">Ahmadi</h2>
         </a>
-        <nav class="hidden md:flex w-[280px] md:w-[358px] justify-between">
+
+        <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+        <nav class="hidden md:flex items-center gap-5">
             <a href="#projects" class="">Projects</a>
             <a href="#bio" class="">About Me</a>
             <a href="#contact" class="">Contact</a> 
-            <button>toggle</button>
+            <button onclick="modeToggle()"> <img id="mode" src="Resources/lightmode.svg" alt="lightmode"> </button>
         </nav>
     </header>
+
+    <nav id="mobile-menu" class="hidden fixed top-18 rounded-xl right-2 w-5/10 flex-col gap-5 px-8 py-6 text-xl min-w-56
+            bg-linear-to-br z-50 from-white/10 to-white/0 backdrop-blur-[20px] border-t border-white/20 text-white md:hidden">
+        <a href="#projects">Projects</a> <hr>
+        <a href="#bio">About Me</a> <hr>
+        <a href="#contact">Contact</a> <hr>
+
+        <button onclick="modeToggle()" class="flex items-center gap-2">
+            <img id="mode" src="Resources/lightmode.svg" alt="lightmode">
+            Theme
+        </button>
+    </nav>
 
     <nav class="fixed top-1/2 right-6 transform -translate-y-1/2 hidden lg:flex flex-col gap-3 z-50">
         <a href="#home" class="dot active" data-section="home"></a>
@@ -41,173 +61,251 @@
         <a href="#contact" class="dot" data-section="contact"></a>
     </nav>
 
-    <div class="flex items-center flex-col mt-[10px] justify-between h-max shrink-0">
+    <main class="gap-24 flex flex-col justify-between"> 
+        <section id="home" class="min-h-screen w-full flex flex-col items-center justify-center py-20 lg:pt-32 lg:snap-start lg:snap-always">
+            <div class="w-11/12 md:w-10/12 md:max-w-2xl lg:max-w-[800px] sm:mt-15 lg:mt-0 min-w-[22rem] mx-auto flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-10 lg:gap-8 
+                p-6 lg:p-6 bg-linear-to-br from-white/10 to-transparent backdrop-blur-md rounded-2xl lg:rounded-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all 
+                duration-300 ease-in-out hover:scale-[1.01] hover:border-white/40 fade-in 2xl:scale-120 2xl:hover:scale-100 transform-gpu">
 
-        <main class="gap-[100px] flex flex-col justify-between"> 
-            <section id="home" class="flex md:h-[calc(100vh-200px)] mt-[60px] md:justify-center flex-col items-center lg:snap-start lg:snap-always">
-                <div class="box lg:min-h-[458px] md:min-h-[1128px] md:max-w-[655px] lg:max-w-[990px] lg:w-[970px] lg:mr-[36px] min-w-[342px]
-                            overflow-x-hidden shrink-0 w-[88vw] mt-17 md:mt-[550px] lg:mt-[400px] min-[536px]:h-[886px] h-[822px] min-[401px]:h-[836px] sm:h-[1080px] md:h-[70vh]
-                            lg:h-[550px] flex flex-col items-center justify-start fade-in transition-all duration-300 ease-in-out hover:scale-101">
-
-                    <div class="flex flex-row gap-x-[15px] lg:mt-[12px] lg:gap-x-[25px]">
-                        <img class=" hidden lg:mt-[25px] lg:ml-[14px] lg:block w-[380px] h-[440px] border rounded-[15px] border-[#fdfdfd]" src="Resources/person.png" alt="pic">
+                <img class="hidden lg:block w-96 h-110 lg:h-90 lg:w-80 aspect-square border rounded-2xl border-white/60" src="Resources/person.webp" alt="pic">
+                
+                <div class="flex mb-6 mt-[-24px] lg:mt-[-50px] lg:w-101 flex-col opacity-0 translate-y-5 animate-[reveal-section_1s_ease-out_forwards_0.3s]">
+                    
+                    <img class="lg:hidden md:mt-3 min-w-[306px] w-[75vw] aspect-square max-w-[589px] object-cover border rounded-2xl border-white/60 mx-auto" src="Resources/person.png" alt="pic">
+                    
+                    <div class="flex flex-wrap mt-9 items-center gap-2 sm:gap-4 w-full font-serif">
+                        <h3 class="text-[2rem] sm:text-5xl md:text-6xl lg:text-3xl font-bold">Hey</h3>
                         
-                        <div class="flex mt-[-6px] flex-col opacity-0 translate-y-5 animate-[reveal-section_1s_ease-out_forwards_0.3s]">
+                        <img class="w-10 sm:w-14 aspect-square lg:w-12 object-contain animate-bounce" src="Resources/wave-white.png" alt="wave">
                             
-                            <img class="lg:hidden md:mt-[12px] min-w-[306px] w-[75vw] aspect-square max-w-[589px] object-cover border rounded-[15px] border-[#fdfdfd] mx-auto" src="Resources/person.png" alt="pic">
-                            
-                            <div class="flex max-[400px]:ml-[15px] justify-start lg:justify-start text-[32px] sm:text-[48px] md:text-[40px] w-full max-w-[500px] items-center">
-                                <h3 class="relative top-[20px] lg:top-[12px]">Hey</h3>
-                                <img class="w-[52px] aspect-square sm:w-[62px] md:w-[60px] relative ml-[8px] top-[20px] lg:top-[12px]" src="Resources/wave-white.png" alt="wave">
-                                <h3 class="self-center relative top-[20px] lg:top-[12px]">, I'm Sajjad...</h3>
-                            </div>
-                            
-                            <div class="min-w-[340px] max-[400px]:ml-[15px] w-[78vw] max-w-[404px] md:max-w-[550px] sm:w-[70vw] shrink-0 sm:max-w-[477px] flex flex-col lg:flex-row justify-between lg:justify-start">
-                                <div class="mt-[24px] lg:mt-[12px] flex flex-row">
-                                    <span class="text-[24px] sm:text-[28px]">Currently a junior</span>
-                                </div>
-                                
-                                <img class="w-[236px] lg:w-[300px] lg:relative lg:top-[12px] sm:w-[280px] md:w-[350px] self-end" src="Resources/softDev.png" alt="softDev">
-                            </div>
-                            
-                            <div class="min-w-[332px] max-[400px]:ml-[18px] w-[79vw] max-w-[589px] lg:max-w-[530px]">
-                                <p class="text-[18px] sm:text-[22px] lg:text-[22px] lg:mt-[18px] text-justify">I am currently working on my web development 
-                                    skills and learning the ropes of the industry. I'm open to opportunities where
-                                    I can contribute to a team, tackle real challenges, and continue to learn from
-                                    hands-on experience. I'm especially eager to be in an environment that encourages
-                                    growth and allows me to constantly improve my craft...</p>
-                            </div>
-                                
-                            <div class="flex max-[400px]:ml-[15px] min-[400px]:self-end md:self-center flex-row justify-between min-w-[332px] w-[79vw] max-w-[330px] md:max-w-[550px] mt-[16px] md:mt-[30px] sm:text-[16px] md:text-[22px] lg:text-[20px] lg:justify-start gap-x-[15px] lg:gap-x-[30px]">
-                                <button class="border p-[12px] border-white md:p-[40px] md:pt-[16px] md:pb-[16px] rounded-[10px] hover:bg-[#ffffff] hover:text-black hover:border-[#000000] transition-all duration-300 ease-in-out">Download Resume</button>
-                                <a href="projects_section.html" target="_self" class="border max-[400px]:pl-[10px] p-[12px] px-[17px] border-white md:p-[40px] md:pt-[16px] md:pb-[16px] rounded-[10px] hover:bg-[#ffffff] hover:text-black hover:border-[#000000] transition-all duration-300 ease-in-out">See My Projects</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- <section id="projects" class="flex h-screen justify-center flex-col items-center md:snap-start md:snap-always">
-                <div class="flex flex-row mt-[60px] gap-3 border-y border-white rounded-[25px] py-2.5 w-[72vw] overflow-x-auto items-center">
-                    <div class="box_LMS w-[21vw] h-[71vh] flex items-center justify-center flex-col fade-in transition-all duration-300 ease-in-out hover:scale-102">
-                        <div class="w-[17vw] h-[25vh] mb-[13px]">
-                            <img src="Resources/LMS.png" alt="LMS" class="rounded-[6px] w-[20vw] h-[25vh]">
-                        </div>
-                        
-                        <div class="flex flex-col w-[17vw] gap-1 text-justify">
-                            <h2 class="text-[25px] text-center">LMS</h2>
-                            <p class="font">
-                                This project is a comprehensive Library Management System (LMS)
-                                developed using C++ and the Qt framework to provide a robust, cross-platform 
-                                desktop application...  for modern library operations. It is designed to efficiently
-                                manage the library's collection, patrons, and all lending and reservation 
-                                processes through a user-friendly graphical interface.
-                            </p>
-                        </div>
-
-                        <div class="gap-5 justify-center items-end flex flex-row w-[16vw] h-[8vh]">
-                            <a href="https://github.com/Ahmadi-Sajjad/Library_Managment_System" 
-                                target="_blank" rel="noopener noreferrer"
-                                class="border w-[140px] h-[38px] border-white rounded-[10px] flex items-center justify-center hover:bg-[#ffffff] hover:text-black hover:border-[#000000] transition-all duration-300 ease-in-out"> View Code</a>                            
-                            <button class="border bg-white text-black w-[140px] h-[38px] border-[#C7CDCF] rounded-[10px] hover:bg-[#C7CDCF] hover:text-black hover:border-[#C7CDCF] transition-all duration-300 ease-in-out">More...</button>
-                        </div>
-                    </div>
-
-                    <div class="box w-[20vw] h-[70vh] flex flex-col justify-center fade-in transition-all duration-300 ease-in-out hover:scale-102">
-
+                        <h3 class="text-[2rem] sm:text-5xl md:text-6xl lg:text-3xl font-bold">, I'm Sajjad...</h3>
                     </div>
                     
-                    <div class="box w-[20vw] h-[70vh] flex flex-col justify-center fade-in transition-all duration-300 ease-in-out hover:scale-102">
-
+                    <div class="min-w-[21.25rem] max-[400px]:ml-[15px] lg:w-101 w-4/5 max-w-[404px] md:max-w-155 sm:w-[70vw] shrink-0 sm:max-w-[477px] flex flex-col lg:flex-row items-start">
+                        <span class="mt-4 text-2xl sm:text-3xl lg:text-xl">Currently a junior</span>
+                        
+                        <img class="w-60 lg:mt-6 sm:w-[280px] md:w-99 lg:w-50 self-end lg:self-auto" src="Resources/softDev.png" alt="softDev">
                     </div>
+                    
+                    <div class="min-w-[332px] max-[400px]:ml-[18px] w-[79vw] max-w-[589px] lg:max-w-[400px] mt-[-20px]">
+                        <p class="text-lg lg:text-sm sm:text-xl text-gray-200 leading-relaxed mt-6 text-center lg:text-left max-w-2xl drop-shadow-sm">
+                            I am currently working on my web development skills and learning the ropes of the industry. 
+                            I'm open to opportunities where I can contribute to a team, tackle real challenges, and continue 
+                            to learn from hands-on experience. I'm especially eager to be in an environment that encourages 
+                            growth and allows me to constantly improve my craft...
+                        </p>
+                    </div>
+                        
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-1 mt-8 w-full justify-center lg:justify-start">
+                        
+                        <button class="px-8 py-3 lg:px-6 lg:py-2 lg:text-sm border border-white rounded-xl lg:rounded-[8px] text-lg font-medium transition-all duration-300 ease-in-out 
+                                    hover:bg-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] active:scale-95">Download Resume</button>
 
-                    <div>
-                        <button class="rounded-[60px] box_arrow w-[50px] h-[50px] flex flex-col justify-center items-center transition-all duration-300 ease-in-out hover:scale-112">-></button>
+                        <a href="projects_section.html" class="px-8 py-3 lg:px-6 lg:py-2 lg:text-sm border border-white rounded-xl lg:rounded-[8px] text-lg font-medium 
+                                transition-all duration-300 ease-in-out flex items-center justify-center
+                                hover:bg-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] active:scale-95"> See My Projects</a>
                     </div>
                 </div>
+            </div>
+        </section>
 
-            </section> -->
+        <section id="projects" class="relative min-h-screen w-full flex flex-col items-center justify-center py-24 px-6 md:px-12 lg:snap-start lg:snap-always overflow-hidden">
+    
+            <div class="w-full max-w-[1000px] mx-auto flex flex-col items-center relative">
+                
+                <div class="hidden lg:block absolute -left-5 top-0 bottom-32 w-px bg-linear-to-b from-transparent via-white/40 to-transparent">
+                    <div class="absolute top-0 -left-[2px] w-1 h-1 bg-white rounded-full shadow-[0_0_8px_white]"></div>
+                </div>
 
-            <!-- <section id="bio" class="flex h-screen justify-center flex-col items-center md:snap-start md:snap-always">
-                <div class="w-[75vw] flex flex-row items-center justify-center gap-20 h-[80vh] box mt-[70px]">
-                    <div class="h-[70vh] w-[25vw] flex flex-col justify-center ml-[50px]">
-                        <h1 class="font-bold relative right-[35px] text-[23px] bottom-[14px]">From Theory to Impact</h1>
-                        <div class="text-justify">
-                            <p class="font">
-                                The most interesting questions aren't about who I am, but what can be achieved. My approach is centered on
-                                turning abstract ideas and complex problems into tangible outcomes. Through my studies in Computer Engineering at the University of Tehran,
-                                I am developing a rigorous, action-oriented mindset. My primary goal is to master the tools and frameworks that allow for the creation
-                                 of meaningful and efficient solutions. <a class="!text-[13px] text-gray-300 hover:underline cursor-pointer" href="">more...</a>
+                <div class="hidden lg:block absolute -right-5 top-0 bottom-32 w-px bg-linear-to-b from-transparent via-white/40 to-transparent">
+                    <div class="absolute top-0 -left-[2px] w-1 h-1 bg-white rounded-full shadow-[0_0_8px_white]"></div>
+                </div>
+
+                <div class="w-full lg:max-w-[800px] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 xl:gap-10 transform-gpu transition-transform origin-top xl:scale-110 2xl:scale-120">
+                    
+                    <div class="group relative flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/40 hover:-translate-y-2 shadow-xl">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="Resources/LMS.png" alt="LMS" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div class="p-4 flex flex-col grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-2xl font-bold">LMS</h3>
+                                <span class="text-[10px] uppercase tracking-widest bg-white/20 px-2 py-1 mt-1 rounded text-white/70">C++ / Qt</span>
+                            </div>
+                            <p class="text-gray-300 text-[12px] leading-relaxed mb-6 line-clamp-6">
+                                A comprehensive Library Management System developed to provide a robust, cross-platform desktop application. Features efficient collection management and a user-friendly GUI.
                             </p>
+                            <div class="mt-auto flex items-center gap-4">
+                                <a href="https://github.com/Ahmadi-Sajjad/Library_Managment_System" target="_blank" class="flex-1 py-3 text-center text-[12px] font-semibold border border-white/60 rounded-[8px] hover:bg-white hover:text-black transition-all duration-300 active:scale-95">View Code</a>
+                                <button class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="border border-gray-500 rounded-[10px] p-[5px] w-[35vw] h-[70vh]">
-                        <img class="rounded-[10px] w-[35vw] h-[68vh]" src="Resources/img_aboutme.png" alt="img_aboutme">
+
+                    <div class="group relative flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/40 hover:-translate-y-2 shadow-xl">
+                        
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="Resources/ode.jpg" alt="O.D.E Solver" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div class="p-4 flex flex-col grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-2xl font-bold">O.D.E</h3>
+                                <span class="text-[10px] uppercase tracking-widest bg-white/20 px-2 py-1 mt-1 rounded text-white/70">Python / qt</span>
+                            </div>
+                            
+                            <p class="text-gray-300 text-[12px] leading-relaxed mb-6 line-clamp-6">
+                                A desktop application that bridges mathematical theory and visualization. 
+                                It solves first-order linear ODEs in the form A(x)y' + P(x)y = R(x) 
+                                using SymPy for exact analytical solutions. Results are rendered in 
+                                professional LaTeX format with dynamic plots generated via Matplotlib, 
+                                providing an interactive experience for exploring differential equations.
+                            </p>
+
+                            <div class="mt-auto flex items-center gap-4">
+                                <a href="https://github.com/Ahmadi-Sajjad/Linear_O.D.E_Solver" 
+                                target="_blank" 
+                                class="flex-1 py-3 text-center text-[12px] font-semibold border border-white/60 rounded-[8px] hover:bg-white hover:text-black transition-all duration-300 active:scale-95">
+                                    View Code
+                                </a>
+                                <button class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">
+                                    Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group relative flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/40 hover:-translate-y-2 shadow-xl">
+                        
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="Resources/stm.png" alt="STM" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div class="p-4 flex flex-col grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-2xl font-bold">STM</h3>
+                                <span class="text-[10px] uppercase tracking-widest bg-white/20 px-2 py-1 mt-1 rounded text-white/70">C++ / File I/O</span>
+                            </div>
+                            
+                            <p class="text-gray-300 text-[12px] leading-relaxed mb-6 line-clamp-6">
+                                A C++ application designed to handle academic records for multiple engineering majors. 
+                                It features automated GPA calculation, student registration, and persistent file-based storage. 
+                                The system organizes data through performance-based sorting and major-specific filtering, 
+                                demonstrating a structured approach to database management and data integrity.
+                            </p>
+
+                            <div class="mt-auto flex items-center gap-4">
+                                <a href="https://github.com/Ahmadi-Sajjad/STM" 
+                                target="_blank" 
+                                class="flex-1 py-3 text-center text-[12px] font-semibold border border-white/60 rounded-[8px] hover:bg-white hover:text-black transition-all duration-300 active:scale-95">
+                                    View Code
+                                </a>
+                                <button class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">
+                                    Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-12 xl:mt-16 opacity-0 animate-[reveal-section_1s_ease-out_forwards_0.6s]">
+                    <a href="projects_section.html" class="group relative flex items-center gap-4 px-8 py-3 bg-white/5 border border-white/20 rounded-full backdrop-blur-xl transition-all duration-500 hover:bg-white hover:text-black hover:scale-105 active:scale-95 overflow-hidden">
+                        <div class="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></div>
+                        
+                        <span class="text-xs font-bold uppercase tracking-[0.2em]">Explore All Projects</span>
+                        
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="bio" class="flex h-screen justify-center flex-col items-center md:snap-start md:snap-always">
+            <div class="w-[75vw] flex flex-row items-center justify-center gap-20 h-[80vh] box mt-[70px]">
+                <div class="h-[70vh] w-[25vw] flex flex-col justify-center ml-[50px]">
+                    <h1 class="font-bold relative right-[35px] text-[23px] bottom-[14px]">From Theory to Impact</h1>
+                    <div class="text-justify">
+                        <p class="font">
+                            The most interesting questions aren't about who I am, but what can be achieved. My approach is centered on
+                            turning abstract ideas and complex problems into tangible outcomes. Through my studies in Computer Engineering at the University of Tehran,
+                            I am developing a rigorous, action-oriented mindset. My primary goal is to master the tools and frameworks that allow for the creation
+                                of meaningful and efficient solutions. <a class="!text-[13px] text-gray-300 hover:underline cursor-pointer" href="">more...</a>
+                        </p>
                     </div>
                 </div>
-            </section> -->
-
-            <!-- <section id="contact" class="flex h-screen w-full justify-end flex-col items-center md:snap-start md:snap-always">
-                <div class="flex flex-row justify-evenly w-full h-[60vh] box !m-[0px] !rounded-b-[0px] items-center gap-2">
-                    <div class="flex flex-col border-y rounded-[15px] h-[44vh] border-white w-[33vw] pl-[2vw] hover:scale-101 transition-all ease-in-out duration-200">
-                        <ul>
-                            <div class="mt-[35px] flex flex-row">
-                                <img class="w-[35px] h-[35px]" src="./Resources/github.png" alt="github">
-                                <h3 class="ml-[20px] mt-[4px]">Github Page:</h3>
-                                <a class="ml-[7px] mt-[4px] copy-to-clipboard text-blue-400 hover:underline cursor-pointer text-lg" href="javascript:void(0);">https://github.com/Ahmadi-Sajjad</a>
-                            </div>
-
-                            <div class="mt-[25px] flex flex-row">
-                                <img class="w-[35px] h-[35px]" src="./Resources/linkedin.png" alt="linkedin">
-                                <h3 class="ml-[20px] mt-[4px]">linkedin:</h3>
-                                <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0);">place holder</a>
-                            </div>
-
-                            <div class="mt-[25px] flex flex-row">
-                                <img class="w-[35px] h-[35px]" src="./Resources/address.png" alt="address">
-                                <h3 class="ml-[20px] mt-[4px]">Address:</h3>
-                                <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0);">Iran, Qom</a>
-
-                            </div>
-                        </ul>
-                    </div>
-
-                    <div class="flex flex-col border-y rounded-[15px] h-[44vh] border-white w-[33vw] pl-[2vw] hover:scale-101 transition-all ease-in-out duration-200">
-                        <ul>
-                            <div class="mt-[35px] flex flex-row">
-                                <img class="w-[35px] h-[35px]" src="./Resources/phone.png" alt="phone">
-                                <h3 class="ml-[20px] mt-[4px]">Phone:</h3>
-                                <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0);">+98 996 423 6697</a>
-                            </div>
-
-                            <div class="mt-[25px] flex flex-row"> 
-                                <img class="w-[35px] h-[35px]" src="./Resources/telegram.png" alt="telegram">
-                                <h3 class="ml-[20px] mt-[4px]">Telegram:</h3>
-                                <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0)">@S_Ahmadi_2005</a>
-                            </div>
-
-                            <div class="flex flex-row mt-[25px]"><img class="w-[35px] h-[35px]" src="./Resources/gmail.png" alt="gmail">
-                                <h3 class="ml-[20px] pt-[7px]">E-Mail:</h3>
-                                <div class="ml-[10px] pt-[4px]">
-                                    <ul class="list-disc pl-5 space-y-2 [&::marker]:text-2xl">
-                                        <li class="text-[20px]">
-                                            <a href="mailto:ahmadi.sajjad.2005@gmail.com" 
-                                            class="copy-to-clipboard text-blue-400 hover:underline cursor-pointer text-lg">ahmadi.sajjad.2005@gmail.com</a>
-                                        </li>
-                                        <li class="text-[20px]">
-                                            <a href="mailto:s.ahmadi.m.ahmadi@gmail.com" 
-                                            class="copy-to-clipboard text-blue-400 hover:underline cursor-pointer text-lg">s.ahmadi.m.ahmadi@gmail.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
+                <div class="border border-gray-500 rounded-2.5 p-[5px] w-[35vw] h-[70vh]">
+                    <img class="rounded-2.5 w-[35vw] h-[68vh]" src="Resources/img_aboutme.png" alt="img_aboutme">
                 </div>
-                <div id="copy-notification" class="notification-bar">Copied!</div>
-            </section> -->
-        </main>
+            </div>
+        </section> -->
 
-    </div>
+        <!-- <section id="contact" class="flex h-screen w-full justify-end flex-col items-center md:snap-start md:snap-always">
+            <div class="flex flex-row justify-evenly w-full h-[60vh] box !m-[0px] !rounded-b-[0px] items-center gap-2">
+                <div class="flex flex-col border-y rounded-[15px] h-[44vh] border-white w-[33vw] pl-[2vw] hover:scale-101 transition-all ease-in-out duration-200">
+                    <ul>
+                        <div class="mt-[35px] flex flex-row">
+                            <img class="w-[35px] h-[35px]" src="./Resources/github.png" alt="github">
+                            <h3 class="ml-[20px] mt-[4px]">Github Page:</h3>
+                            <a class="ml-[7px] mt-[4px] copy-to-clipboard text-blue-400 hover:underline cursor-pointer text-lg" href="javascript:void(0);">https://github.com/Ahmadi-Sajjad</a>
+                        </div>
+
+                        <div class="mt-[25px] flex flex-row">
+                            <img class="w-[35px] h-[35px]" src="./Resources/linkedin.png" alt="linkedin">
+                            <h3 class="ml-[20px] mt-[4px]">linkedin:</h3>
+                            <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0);">place holder</a>
+                        </div>
+
+                        <div class="mt-[25px] flex flex-row">
+                            <img class="w-[35px] h-[35px]" src="./Resources/address.png" alt="address">
+                            <h3 class="ml-[20px] mt-[4px]">Address:</h3>
+                            <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0);">Iran, Qom</a>
+
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col border-y rounded-[15px] h-[44vh] border-white w-[33vw] pl-[2vw] hover:scale-101 transition-all ease-in-out duration-200">
+                    <ul>
+                        <div class="mt-[35px] flex flex-row">
+                            <img class="w-[35px] h-[35px]" src="./Resources/phone.png" alt="phone">
+                            <h3 class="ml-[20px] mt-[4px]">Phone:</h3>
+                            <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0);">+98 996 423 6697</a>
+                        </div>
+
+                        <div class="mt-[25px] flex flex-row"> 
+                            <img class="w-[35px] h-[35px]" src="./Resources/telegram.png" alt="telegram">
+                            <h3 class="ml-[20px] mt-[4px]">Telegram:</h3>
+                            <a class="ml-[7px] mt-[4px] copy-to-clipboard hover:underline cursor-pointer" href="javascript:void(0)">@S_Ahmadi_2005</a>
+                        </div>
+
+                        <div class="flex flex-row mt-[25px]"><img class="w-[35px] h-[35px]" src="./Resources/gmail.png" alt="gmail">
+                            <h3 class="ml-[20px] pt-[7px]">E-Mail:</h3>
+                            <div class="ml-2.5 pt-[4px]">
+                                <ul class="list-disc pl-5 space-y-2 [&::marker]:text-2xl">
+                                    <li class="text-[20px]">
+                                        <a href="mailto:ahmadi.sajjad.2005@gmail.com" 
+                                        class="copy-to-clipboard text-blue-400 hover:underline cursor-pointer text-lg">ahmadi.sajjad.2005@gmail.com</a>
+                                    </li>
+                                    <li class="text-[20px]">
+                                        <a href="mailto:s.ahmadi.m.ahmadi@gmail.com" 
+                                        class="copy-to-clipboard text-blue-400 hover:underline cursor-pointer text-lg">s.ahmadi.m.ahmadi@gmail.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div id="copy-notification" class="notification-bar">Copied!</div>
+        </section> -->
+    </main>
+
 </body>
 </html>

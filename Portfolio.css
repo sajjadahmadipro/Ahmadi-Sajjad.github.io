@@ -3,15 +3,6 @@
   --color-primary-100: #219231;
 }
 
-/* Add this to Portfolio.css */
-
-/* Apply zoom ONLY when the screen is between 1024px (Laptops) and 1550px (Your screen limit) */
-@media screen and (min-width: 1024px) and (max-width: 1550px) {
-    body {
-        zoom: 0.7;
-    }
-}
-
 *, ::before, ::after {
   box-sizing: border-box;
 }
@@ -20,38 +11,9 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-body {
-  background-color: transparent;
-}
 
 button {
   cursor: pointer;
-}
-
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.box_header {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  width: 100%;
-  left: 0;
-  top: 0;
-  box-sizing: border-box; 
-  
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 0px 0px 20px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 #bg-video {
@@ -60,22 +22,8 @@ button {
   object-fit: cover;
 }
 
-.box {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  /* padding: 10px 30px; */
-  /* margin: 10px; */
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
 .box_LMS {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
   
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
