@@ -3,138 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmadi Dashboard</title>
+    <title>L.M.S Project | Ahmadi Dashboard</title>
     
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
+        body { font-family: 'Montserrat', sans-serif; opacity: 0; animation: fadeIn 0.5s ease-out forwards; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        /* Custom scrollbar to match the dark theme */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1); 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2); 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.4); 
-        }
+
+        .layout-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
+
+        /* Sidebar Collapsed Styles */
+        .sidebar-collapsed .nav-text { display: none; }
+        .sidebar-collapsed .profile-section { padding: 10px; }
+        .sidebar-collapsed .profile-img-container { width: 40px; height: 40px; margin-bottom: 0; }
+        .sidebar-collapsed .profile-info { display: none; }
+        .sidebar-collapsed .section-header { display: none; }
+        .sidebar-collapsed .nav-item { justify-content: center; padding-left: 0; padding-right: 0; }
+        .sidebar-collapsed .nav-icon { margin-right: 0; }
     </style>
 </head>
-<body class="text-white h-screen overflow-hidden">
+<body class="text-white h-screen overflow-hidden bg-black selection:bg-white selection:text-black">
 
-    <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden bg-black">
-        <video autoplay muted loop id="bg-video" class="w-full h-full object-cover opacity-60">
+    <div class="fixed top-0 left-0 w-full h-full -z-10">
+        <video autoplay muted loop playsinline poster="Resources/video-poster.jpg" id="bg-video" class="w-full h-full object-cover opacity-50 blur-sm">
             <source src="Resources/DarkMode.mp4" type="video/mp4">
-            <div class="w-full h-full bg-slate-900"></div>
         </video>
+        <div class="absolute inset-0 bg-black/60"></div>
     </div>
 
-    <aside class="fixed top-0 left-0 h-screen w-64 border-r border-white/20 bg-black/20 backdrop-blur-md flex flex-col z-50 transition-all duration-300">
+    <button id="sidebar-toggle" class="fixed top-4 left-4 z-60 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-lg text-white transition-all duration-300 shadow-lg group">
+        <i class="fas fa-bars text-lg group-hover:scale-110 transition-transform"></i>
+    </button>
+
+    <aside id="sidebar" class="fixed top-0 left-0 h-full bg-black/80 backdrop-blur-xl border-r border-white/10 z-50 layout-transition w-64 -translate-x-full lg:translate-x-0 overflow-hidden flex flex-col">
         
-        <div class="p-6 text-center border-b border-white/20 flex flex-col items-center gap-3">
-            <div class="p-[2px] border border-white rounded-full">
-                <img class="w-[50px] h-[50px] rounded-full object-cover" src="Resources/Profile pic.jpg" alt="Profile">
+        <div class="profile-section mt-16 mb-4 px-4 flex flex-col items-center justify-center transition-all duration-300">
+            <div class="profile-img-container w-12 h-12 rounded-full border border-white/30 p-0.5 mb-3 shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 transition-all">
+                <img src="Resources/Profile pic.jpg" class="w-full h-full rounded-full object-cover" alt="Profile">
             </div>
-            <h2 class="text-xl font-bold tracking-wide">Ahmadi</h2>
+            <div class="profile-info text-center whitespace-nowrap overflow-hidden">
+                <h2 class="font-bold text-lg tracking-wide">Ahmadi</h2>
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest">Developer</p>
+            </div>
         </div>
 
-        <nav class="flex-grow p-4 space-y-8 mt-2 overflow-y-auto">
-            
-            <div class="space-y-2">
-                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-3 mb-3">C++/Qt</h3>
-                <ol class="space-y-2">
+        <nav class="flex-1 overflow-y-auto px-3 space-y-6">
+            <div>
+                <h3 class="section-header text-[10px] font-bold text-gray-500 uppercase tracking-widest px-3 mb-2">Projects</h3>
+                <ul class="space-y-1">
                     <li>
-                        <a href="#" data-page="lms" class="flex items-center py-3 px-4 rounded-[10px] border border-transparent transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:scale-105 group">
-                            <i class="fas fa-arrow-right w-6 text-center mr-3"></i>
-                            <span class="font-medium">L.M.S</span>
+                        <a href="lms.html" class="nav-item flex items-center py-3 px-3 rounded-xl hover:bg-white/10 transition-colors group border border-transparent hover:border-white/5">
+                            <i class="fas fa-book w-6 text-center text-gray-400 group-hover:text-white nav-icon transition-colors"></i>
+                            <span class="nav-text text-sm font-medium ml-3 whitespace-nowrap">L.M.S</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-page="ode" class="flex items-center py-3 px-4 rounded-[10px] border border-transparent transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:scale-105 group">
-                            <i class="fas fa-arrow-right w-6 text-center mr-3"></i>
-                            <span class="font-medium">O.D.E Solver</span>
+                        <a href="ode.html" class="nav-item flex items-center py-3 px-3 rounded-xl hover:bg-white/10 transition-colors group border border-transparent hover:border-white/5">
+                            <i class="fas fa-calculator w-6 text-center text-gray-400 group-hover:text-white nav-icon transition-colors"></i>
+                            <span class="nav-text text-sm font-medium ml-3 whitespace-nowrap">O.D.E Solver</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-page="fms" class="flex items-center py-3 px-4 rounded-[10px] border border-transparent transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:scale-105 group">
-                            <i class="fas fa-arrow-right w-6 text-center mr-3"></i>
-                            <span class="font-medium">F.M.S</span>
-                        </a>
-                    </li>
-                </ol>
-            </div>
-
-            <!-- <div class="space-y-2">
-                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-3 mb-3">Web</h3>
-                <ul class="space-y-2">
-                    <li>
-                        <a href="#" class="flex items-center py-3 px-4 rounded-[10px] border border-transparent transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:scale-105 group">
-                            <i class="fas fa-user w-6 text-center mr-3"></i>
-                            <span class="font-medium">Profile</span>
+                        <a href="fms.html" class="nav-item flex items-center py-3 px-3 rounded-xl hover:bg-white/10 transition-colors group border border-transparent hover:border-white/5">
+                            <i class="fas fa-plane w-6 text-center text-gray-400 group-hover:text-white nav-icon transition-colors"></i>
+                            <span class="nav-text text-sm font-medium ml-3 whitespace-nowrap">F.M.S</span>
                         </a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
+
+            <div>
+                <h3 class="section-header text-[10px] font-bold text-gray-500 uppercase tracking-widest px-3 mb-2">System</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="projects_section.html" class="nav-item flex items-center py-3 px-3 rounded-xl hover:bg-red-500/10 hover:text-red-400 transition-colors group border border-transparent hover:border-red-500/20">
+                            <i class="fas fa-power-off w-6 text-center nav-icon"></i>
+                            <span class="nav-text text-sm font-medium ml-3 whitespace-nowrap">Exit</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+
+        <div class="p-4 border-t border-white/5 text-center">
+            <p class="section-header text-[10px] text-gray-600">&copy; 2026 Ahmadi</p>
+        </div>
     </aside>
 
-    <main class="ml-64 p-10 !pt-7 h-full">
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/80 z-40 hidden lg:hidden opacity-0 transition-opacity duration-300"></div>
+
+    <main id="main-content" class="h-full pt-20 px-4 pb-4 lg:pt-6 lg:pb-6 lg:pr-6 lg:ml-64 layout-transition w-full flex flex-col">
         
-        <div class="border border-white/30 bg-white/5 backdrop-blur-sm rounded-[25px] p-8 min-h-[85vh] transition-all duration-300 hover:border-white/50">
+        <div class="flex-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col relative w-full">
             
-            <header class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-                <h1 class="text-3xl font-bold">Dashboard</h1>
-                <button class="border border-white px-6 py-2 rounded-[10px] hover:bg-white hover:text-black transition-all duration-300">
-                    Notifications
-                </button>
+            <header class="p-6 lg:p-8 border-b border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shrink-0">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold">L.M.S Project</h1>
+                    <div class="flex items-center gap-2 mt-2 text-xs text-gray-400">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span>v1.2.0 Stable</span>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <a href="path/to/your/file.zip" download class="flex items-center gap-2 bg-white text-black px-5 py-2 rounded-full hover:bg-gray-200 transition-all text-sm font-bold shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+                        <i class="fas fa-download"></i> Download App
+                    </a>
+                    
+                    <a href="https://github.com/Ahmadi-Sajjad" target="_blank" class="flex items-center gap-2 border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all text-sm font-medium">
+                        <i class="fab fa-github"></i> <span class="hidden sm:inline">Repo</span>
+                    </a>
+                </div>
             </header>
 
-            <div id="page-lms" class="page hidden">
-                <h1 class="text-2xl font-bold mb-4">L.M.S</h1>
-                <p>این محتوای بخش LMS است...</p>
-            </div>
+            <div class="flex-1 overflow-y-auto p-6 lg:p-8 custom-scrollbar relative">
+                
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
+                    <div class="xl:col-span-2 relative h-56 md:h-72 rounded-2xl overflow-hidden border border-white/10 group">
+                        <img src="Resources/LMS.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="LMS">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-6">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">C++ / Qt Widget</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col justify-center gap-4">
+                        <h3 class="text-lg font-bold">Tech Stack</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between border-b border-white/5 pb-2">
+                                <span class="text-gray-400">Language</span>
+                                <span>C++17</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/5 pb-2">
+                                <span class="text-gray-400">GUI</span>
+                                <span>Qt Widgets</span>
+                            </div>
+                            <div class="flex justify-between pb-2">
+                                <span class="text-gray-400">Backend</span>
+                                <span>SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div id="page-ode" class="page hidden">
-                <h1 class="text-2xl font-bold mb-4">O.D.E Solver</h1>
-                <p>محتوای ODE Solver اینجاست...</p>
-            </div>
+                <div class="prose prose-invert max-w-none text-sm md:text-base text-gray-300 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white mb-2">Overview</h3>
+                    <p class="mb-4">
+                        A comprehensive Library Management System designed to modernize traditional book keeping. The application handles the entire lifecycle of a library book, from acquisition to member issuance and return.
+                    </p>
+                    <h3 class="text-xl font-bold text-white mb-2">Key Features</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Multi-role authentication (Librarian/Member).</li>
+                        <li>Late fee calculation engine.</li>
+                        <li>Visual dashboard for borrowing statistics.</li>
+                    </ul>
+                </div>
 
-            <div id="page-fms" class="page hidden">
-                <h1 class="text-2xl font-bold mb-4">F.M.S</h1>
-                <p>این بخش FMS است...</p>
             </div>
         </div>
     </main>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById("sidebar-toggle");
+            const sidebar = document.getElementById("sidebar");
+            const mainContent = document.getElementById("main-content");
+            const overlay = document.getElementById("mobile-overlay");
+            const toggleIcon = toggleBtn.querySelector("i");
+            const navLinks = document.querySelectorAll('.nav-item');
+
+            // 1. Highlight Active Link (Based on Filename)
+            // This ensures when you copy this code to 'fms.html', it auto-highlights FMS
+            const currentPath = window.location.pathname.split("/").pop(); // gets 'lms.html'
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if(href === currentPath || (currentPath === '' && href === 'lms.html')) {
+                    link.classList.add("bg-white/15", "border-white/20");
+                    link.classList.remove("border-transparent");
+                    link.querySelector("i").classList.add("text-white");
+                    link.querySelector("i").classList.remove("text-gray-400");
+                }
+            });
+
+            // 2. Sidebar Logic with LocalStorage
+            // This remembers if you collapsed the sidebar when moving between pages
+            let isDesktop = window.innerWidth >= 1024;
+            
+            // Read saved state
+            const savedState = localStorage.getItem('sidebarState'); // 'expanded' or 'collapsed'
+            let desktopExpanded = savedState === 'collapsed' ? false : true;
+            let mobileOpen = false;
+
+            // Apply initial state without animation to prevent flashing
+            if(isDesktop) {
+                if(!desktopExpanded) {
+                    sidebar.classList.add("no-transition"); // Disable transition momentarily
+                    mainContent.classList.add("no-transition");
+                    applyDesktopState();
+                    // Re-enable transition after a brief tick
+                    setTimeout(() => {
+                        sidebar.classList.remove("no-transition");
+                        mainContent.classList.remove("no-transition");
+                    }, 50);
+                }
+            }
+
+            function applyDesktopState() {
+                if (desktopExpanded) {
+                    sidebar.classList.remove("w-20", "sidebar-collapsed");
+                    sidebar.classList.add("w-64");
+                    mainContent.classList.remove("lg:ml-20");
+                    mainContent.classList.add("lg:ml-64");
+                } else {
+                    sidebar.classList.remove("w-64");
+                    sidebar.classList.add("w-20", "sidebar-collapsed");
+                    mainContent.classList.remove("lg:ml-64");
+                    mainContent.classList.add("lg:ml-20");
+                }
+            }
+
+            function handleToggle() {
+                isDesktop = window.innerWidth >= 1024;
+                if (isDesktop) {
+                    desktopExpanded = !desktopExpanded;
+                    // Save state
+                    localStorage.setItem('sidebarState', desktopExpanded ? 'expanded' : 'collapsed');
+                    applyDesktopState();
+                } else {
+                    mobileOpen = !mobileOpen;
+                    if (mobileOpen) {
+                        sidebar.classList.remove("-translate-x-full");
+                        overlay.classList.remove("hidden");
+                        setTimeout(() => overlay.classList.remove("opacity-0"), 10);
+                        toggleIcon.classList.remove("fa-bars");
+                        toggleIcon.classList.add("fa-arrow-left");
+                    } else {
+                        sidebar.classList.add("-translate-x-full");
+                        overlay.classList.add("opacity-0");
+                        setTimeout(() => overlay.classList.add("hidden"), 300);
+                        toggleIcon.classList.remove("fa-arrow-left");
+                        toggleIcon.classList.add("fa-bars");
+                    }
+                }
+            }
+
+            toggleBtn.addEventListener("click", handleToggle);
+            overlay.addEventListener("click", handleToggle);
+
+            window.addEventListener('resize', () => {
+                const newIsDesktop = window.innerWidth >= 1024;
+                if (newIsDesktop && !isDesktop) {
+                    mobileOpen = false;
+                    sidebar.classList.add("-translate-x-full"); // reset mobile state
+                    overlay.classList.add("hidden", "opacity-0");
+                    applyDesktopState(); // enforce desktop state
+                }
+                isDesktop = newIsDesktop;
+            });
+        });
+    </script>
+    <style>
+        .no-transition { transition: none !important; }
+    </style>
 </body>
 </html>
-
-<script>
-    const links = document.querySelectorAll("aside a");
-    const pages = document.querySelectorAll(".page");
-
-    links.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            const target = link.dataset.page;
-
-            pages.forEach(p => p.classList.add("hidden"));
-
-            document.getElementById("page-" + target).classList.remove("hidden");
-        });
-    });
-</script>
