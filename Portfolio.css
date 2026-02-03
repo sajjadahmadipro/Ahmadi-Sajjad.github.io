@@ -1,8 +1,3 @@
-@theme {
-  --color-primary: #f19231;
-  --color-primary-100: #219231;
-}
-
 *, ::before, ::after {
   box-sizing: border-box;
 }

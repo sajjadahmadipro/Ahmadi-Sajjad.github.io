@@ -53,25 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-function modeToggle() {
-    const modeIcon = document.getElementById('mode');
-    const bgVideo = document.getElementById('bg-video'); 
-
-    if (modeIcon.src.includes('darkmode.svg')) {
-        bgVideo.src = 'Resources/DarkMode.mp4';
-        modeIcon.src = 'Resources/lightmode.svg';
-        modeIcon.alt = 'lightmode';
-    } else {
-        bgVideo.src = 'Resources/lightmode.mp4';
-        modeIcon.src = 'Resources/darkmode.svg';
-        modeIcon.alt = 'darkmode';
-    }
-    
-    bgVideo.load();
-    bgVideo.play();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");

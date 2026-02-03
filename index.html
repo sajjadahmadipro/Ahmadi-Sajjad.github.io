@@ -24,12 +24,13 @@
 
 <body class="bg-transparent text-white antialiased overflow-x-hidden selection:bg-white selection:text-black font-['Montserrat']">
     
-    <div class="fixed inset-0 w-full h-full z-0 opacity-50 pointer-events-none">
-        <video autoplay muted loop id="bg-video" poster="Resources/poster.webp">
-            <source id="background" src="Resources/DarkMode.webm" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+<div class="fixed inset-0 w-full h-full z-0 opacity-50 pointer-events-none">
+    <video autoplay muted loop id="bg-video" poster="Resources/poster.webp" class="object-cover w-full h-full">
+        <source id="background" src="Resources/DarkMode.webm" type="video/webm">
+    </video>
+    
+    <div id="video-overlay" class="absolute inset-0 w-full h-full transition-colors duration-500 ease-in-out"></div>
+</div>
 
     <header class="fixed top-0 left-0 z-1000 w-full overflow-x-hidden rounded-b-4xl flex items-center justify-between py-2.5 px-4 lg:py-2 2xl:px-6 2xl:py-5 lg:text-[14px] 2xl:text-[20px] md:py-5 
                 md:text-2xl bg-linear-to-br from-white/10 to-white/0 backdrop-blur-[10px] 
@@ -49,7 +50,6 @@
             <a href="#Qualifications">Qualifications</a>
             <a href="aboutme.html" class="">About Me</a>
             <a href="#contact" class="">Contact</a>
-            <button onclick="modeToggle()"> <img id="mode" src="Resources/lightmode.svg" alt="lightmode"> </button>
         </nav>
     </header>
 
@@ -60,11 +60,6 @@
         <a href="#Qualifications">Edu/Exp</a> <hr>
         <a href="aboutme.html">About Me</a> <hr>
         <a href="#contact">Contact</a> <hr>
-
-        <button onclick="modeToggle()" class="flex items-center gap-2">
-            <img id="mode" src="Resources/lightmode.svg" alt="lightmode">
-            Theme
-        </button>
     </nav>
 
     <nav class="fixed top-1/2 right-6 transform -translate-y-1/2 hidden lg:flex flex-col gap-3 z-50">
@@ -115,7 +110,7 @@
                         
                     <div class="flex flex-col items-center sm:flex-row gap-4 sm:gap-8 mb-1 mt-8 w-full justify-center lg:justify-start">
                         
-                        <div class="w-12/13 lg:w-max p-[2px] rounded-xl lg:rounded-[8px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                        <div class="w-12/13 lg:w-max p-[2px] rounded-xl lg:rounded-[8px] bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
                             <a href="Resources/cv_sajjad.pdf" download="sajjad-ahmadi-resume.pdf" 
                             class="flex items-center justify-center w-full h-full px-6 py-3 lg:py-2 text-lg lg:text-sm font-medium text-white bg-[#0a0a0a]/80 backdrop-blur-sm rounded-[inherit] 
                                     transition-all duration-300 ease-in-out hover:bg-transparent hover:text-white active:scale-95">
