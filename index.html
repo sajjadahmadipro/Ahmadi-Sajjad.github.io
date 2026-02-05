@@ -2,13 +2,13 @@
 <html lang="en" class="bg-black scroll-smooth snap-none md:snap-y md:snap-mandatory overflow-x-hidden [&::-webkit-scrollbar]:hidden text-white">
 <head>
     <meta charset="UTF-8">
+    <meta name="darkreader-lock">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Welcome to the official portfolio of Sajjad Ahmadi. Discover innovative software solutions, from C++ system architectures to modern web applications.">
     <title>Ahamdi Sajjad</title>
     <script src="Portfolio.js" defer></script>
-    <link rel="stylesheet" href="Portfolio.css">
-    <link rel="icon" href="Resources/favicon.webp">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" href="assets/favicon.webp">
+    <link href="./style.css" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,18 +19,18 @@
 <body class="bg-transparent text-white antialiased overflow-x-hidden selection:bg-white selection:text-black font-['Montserrat']">
     
 <div class="fixed inset-0 w-full h-full z-0 opacity-50 pointer-events-none">
-    <video autoplay muted loop id="bg-video" poster="Resources/poster.webp" class="hidden md:block object-cover w-full h-full">
-        <source id="background" src="Resources/DarkMode.webm" type="video/webm">
+    <video autoplay muted loop id="bg-video" poster="assets/poster.webp" class="hidden md:block object-cover w-full h-full">
+        <source id="background" src="assets/DarkMode.webm" type="video/webm">
     </video>
     
     <div id="video-overlay" class="absolute inset-0 w-full h-full transition-colors duration-500 ease-in-out"></div>
 </div>
 
-    <header class="fixed top-0 left-0 z-1000 w-full overflow-x-hidden rounded-b-4xl flex items-center justify-between py-2.5 px-4 lg:py-2 2xl:px-6 2xl:py-5 lg:text-[14px] 2xl:text-[20px] md:py-5 
+    <header class="fixed top-0 left-0 z-1000 w-full overflow-x-hidden flex items-center justify-between py-2.5 px-4 lg:py-2 2xl:px-6 2xl:py-5 lg:text-[14px] 2xl:text-[20px] md:py-5 
                 md:text-2xl bg-linear-to-br from-white/10 to-white/0 backdrop-blur-[10px] 
                 supports-backdrop-filter:backdrop-blur-[10px] rounded-b-xl border border-white/20 shadow-white/5 text-white text-shadow-[1px_1px_2px_rgba(0,0,0,0.2)]">
         <a href="#home" class="flex justify-between gap-x-2 cursor-pointer">
-            <img id="img_profile" class="w-9 aspect-square md:w-11 lg:w-8 rounded-full" src="Resources/profile.webp" alt="icon">
+            <img id="img_profile" class="w-9 aspect-square md:w-11 lg:w-8 rounded-full" src="assets/profile.webp" alt="icon">
             <h2 class="mt-2 md:mt-2">Ahmadi</h2>
         </a>
 
@@ -42,7 +42,7 @@
             <a href="#projects" class="">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#Qualifications">Qualifications</a>
-            <a href="aboutme.html" class="">About Me</a>
+            <a href="about/index.html" class="">About Me</a>
             <a href="#contact" class="">Contact</a>
         </nav>
     </header>
@@ -52,7 +52,7 @@
         <a href="#projects">Projects</a> <hr>
         <a href="#skills">Skills</a> <hr>
         <a href="#Qualifications">Edu/Exp</a> <hr>
-        <a href="aboutme.html">About Me</a> <hr>
+        <a href="about/index.html">About Me</a> <hr>
         <a href="#contact">Contact</a> <hr>
     </nav>
 
@@ -71,16 +71,16 @@
                 p-6 lg:p-6 bg-linear-to-br from-white/10 to-transparent backdrop-blur-md rounded-2xl lg:rounded-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all 
                 duration-300 ease-in-out hover:scale-[1.01] hover:border-white/40 fade-in 2xl:scale-120 2xl:hover:scale-100 transform-gpu">
 
-                <img class="hidden lg:block w-96 h-110 lg:h-90 lg:w-80 aspect-square border rounded-2xl border-white/60" src="Resources/person.webp" alt="pic">
+                <img class="hidden lg:block w-96 h-110 lg:h-90 lg:w-80 aspect-square border rounded-2xl border-white/60" src="assets/person.webp" alt="pic">
                 
                 <div class="flex mb-6 mt-[-24px] lg:mt-[-50px] lg:w-101 flex-col opacity-0 translate-y-5 animate-[reveal-section_1s_ease-out_forwards_0.3s]">
                     
-                    <img class="lg:hidden md:mt-3 min-w-[306px] w-[75vw] aspect-square max-w-[589px] object-cover border rounded-2xl border-white/60 mx-auto" src="Resources/person.webp" alt="pic">
+                    <img class="lg:hidden md:mt-3 min-w-[306px] w-[75vw] aspect-square max-w-[589px] object-cover border rounded-2xl border-white/60 mx-auto" src="assets/person.webp" alt="pic">
                     
                     <div class="flex flex-wrap mt-9 items-center gap-2 sm:gap-4 w-full font-serif justify-center min-[400px]:justify-start">
                         <h3 class="text-[2rem] sm:text-5xl md:text-6xl lg:text-3xl font-bold">Hey</h3>
                         
-                        <img class="w-10 sm:w-14 aspect-square lg:w-12 object-contain animate-bounce" src="Resources/wave-white.png" alt="wave">
+                        <img class="w-10 sm:w-14 aspect-square lg:w-12 object-contain animate-bounce" src="assets/wave-white.png" alt="wave">
                             
                         <h3 class="text-[2rem] sm:text-5xl md:text-6xl lg:text-3xl font-bold">, I'm 
                             <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400">Sajjad...</span>
@@ -90,7 +90,7 @@
                     <div class="min-w-[21.25rem] max-[400px]:ml-[15px] lg:w-101 w-4/5 max-w-[404px] md:max-w-155 sm:w-[70vw] shrink-0 sm:max-w-[477px] flex flex-col lg:flex-row items-start">
                         <span class="mt-4 text-2xl sm:text-3xl lg:text-xl">Currently a junior</span>
                         
-                        <img class="w-60 lg:mt-6 sm:w-[280px] md:w-99 lg:w-50 self-end lg:self-auto" src="Resources/softDev.webp" alt="softDev">
+                        <img class="w-60 lg:mt-6 sm:w-[280px] md:w-99 lg:w-50 self-end lg:self-auto" src="assets/softDev.webp" alt="softDev">
                     </div>
                     
                     <div class="min-w-[320px] max-[400px]:ml-[18px] w-[79vw] max-w-[589px] lg:max-w-[400px] mt-[-20px]">
@@ -105,14 +105,14 @@
                     <div class="flex flex-col items-center sm:flex-row gap-4 sm:gap-8 mb-1 mt-8 w-full justify-center lg:justify-start">
                         
                         <div class="w-12/13 lg:w-max p-[2px] rounded-xl lg:rounded-[8px] bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-                            <a href="Resources/cv_sajjad.pdf" download="sajjad-ahmadi-resume.pdf" 
+                            <a href="assets/cv_sajjad.pdf" download="sajjad-ahmadi-resume.pdf" 
                             class="flex items-center justify-center w-full h-full px-6 py-3 lg:py-2 text-lg lg:text-sm font-medium text-white bg-[#0a0a0a]/80 backdrop-blur-sm rounded-[inherit] 
                                     transition-all duration-300 ease-in-out hover:bg-transparent hover:text-white active:scale-95">
                                 Download Resume
                             </a>
                         </div>
 
-                        <a href="projects_section.html" class="w-12/13 py-3 lg:w-max lg:px-6 lg:py-2 lg:text-sm border border-white rounded-xl lg:rounded-[8px] text-lg font-medium 
+                        <a href="projects/index.html" class="w-12/13 py-3 lg:w-max lg:px-6 lg:py-2 lg:text-sm border border-white rounded-xl lg:rounded-[8px] text-lg font-medium 
                             transition-all duration-300 ease-in-out flex items-center justify-center
                             hover:bg-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] active:scale-95"> See My Projects</a>
                     </div>
@@ -142,7 +142,7 @@
                         
                         <div class="project-card shrink-0 w-full lg:w-[calc(33.333%-22px)] group relative flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/40 hover:-translate-y-2 shadow-xl">
                             <div class="relative aspect-video overflow-hidden">
-                                <img src="Resources/lms_cover.webp" alt="LMS" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <img src="assets/lms_cover.webp" alt="LMS" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </div>
                             <div class="p-4 flex flex-col grow">
@@ -155,14 +155,14 @@
                                 </p>
                                 <div class="mt-auto flex items-center gap-4">
                                     <a href="https://github.com/sajjadahmadipro/Library_Managment_System" target="_blank" class="flex-1 py-3 text-center text-[12px] font-semibold border border-white/60 rounded-[8px] hover:bg-white hover:text-black transition-all duration-300 active:scale-95">View Code</a>
-                                    <a href="projects/LMS/lms.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
+                                    <a href="projects/LMS/index.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="project-card shrink-0 w-full lg:w-[calc(33.333%-22px)] group relative flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/40 hover:-translate-y-2 shadow-xl">
                             <div class="relative aspect-video overflow-hidden">
-                                <img src="Resources/ode.webp" alt="O.D.E" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <img src="assets/ode.webp" alt="O.D.E" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </div>
                             <div class="p-4 flex flex-col grow">
@@ -175,14 +175,14 @@
                                 </p>
                                 <div class="mt-auto flex items-center gap-4">
                                     <a href="https://github.com/sajjadahmadipro/Linear_O.D.E_Solver" target="_blank" class="flex-1 py-3 text-center text-[12px] font-semibold border border-white/60 rounded-[8px] hover:bg-white hover:text-black transition-all duration-300 active:scale-95">View Code</a>
-                                    <a href="projects/ODE/ode.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
+                                    <a href="projects/ODE/index.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="project-card shrink-0 w-full lg:w-[calc(33.333%-22px)] group relative flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/40 hover:-translate-y-2 shadow-xl">
                             <div class="relative aspect-video overflow-hidden">
-                                <img src="Resources/stm.webp" alt="STM" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <img src="assets/stm.webp" alt="STM" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </div>
                             <div class="p-4 flex flex-col grow">
@@ -195,14 +195,14 @@
                                 </p>
                                 <div class="mt-auto flex items-center gap-4">
                                     <a href="https://github.com/sajjadahmadipro/SMS" target="_blank" class="flex-1 py-3 text-center text-[12px] font-semibold border border-white/60 rounded-[8px] hover:bg-white hover:text-black transition-all duration-300 active:scale-95">View Code</a>
-                                    <a href="projects/SMS/sms.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
+                                    <a href="projects/SMS/index.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="project-card hidden lg:flex shrink-0 w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] group relative flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/40 hover:-translate-y-2 shadow-xl">
                             <div class="relative aspect-video overflow-hidden">
-                                <img src="Resources/fms.webp" alt="FMS" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <img src="assets/fms.webp" alt="FMS" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </div>
                             <div class="p-4 flex flex-col grow">
@@ -215,7 +215,7 @@
                                 </p>
                                 <div class="mt-auto flex items-center gap-4">
                                     <a href="https://github.com/Ahmadi-Sajjad/FMS" target="_blank" class="flex-1 py-3 text-center text-[12px] font-semibold border border-white/60 rounded-[8px] hover:bg-white hover:text-black transition-all duration-300 active:scale-95">View Code</a>
-                                    <a href="projects/FMS/fms.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
+                                    <a href="projects/FMS/index.html" class="px-6 py-3 text-[12px] font-semibold bg-white text-black rounded-[8px] hover:bg-gray-300 transition-all duration-300 active:scale-95">Details</a>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +224,7 @@
                 </div>
 
                 <div class="mt-12 xl:mt-16 2xl:mt-30 opacity-0 animate-[reveal-section_1s_ease-out_forwards_0.6s]">
-                    <a href="projects_section.html" class="group relative flex items-center gap-4 px-8 py-3 bg-white/5 border border-white/20 rounded-full backdrop-blur-xl transition-all duration-500 hover:bg-white hover:text-black hover:scale-105 active:scale-95 overflow-hidden">
+                    <a href="projects/index.html" class="group relative flex items-center gap-4 px-8 py-3 bg-white/5 border border-white/20 rounded-full backdrop-blur-xl transition-all duration-500 hover:bg-white hover:text-black hover:scale-105 active:scale-95 overflow-hidden">
                         <span class="text-xs font-bold uppercase tracking-[0.2em]">Explore All Projects</span>
                         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

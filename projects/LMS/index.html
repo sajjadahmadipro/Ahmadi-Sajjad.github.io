@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.M.S Project | Ahmadi Dashboard</title>
+    
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="lms/main_icon.ico">
+    <script src="../../analytics.js" defer></script>
+
+</head>
+<body class="text-white min-h-screen bg-black selection:bg-white selection:text-black overflow-x-hidden">
+    
+    <div class="fixed inset-0 w-full h-full -z-10 opacity-50 pointer-events-none">
+        <img src="../../assets/poster.webp" class="w-full h-full object-cover" alt="Background">
+        <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <button id="sidebar-toggle" class="fixed top-4 left-3 z-60 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-white transition-all duration-300 shadow-lg group">
+        <i class="fas fa-bars text-sm group-hover:scale-110 transition-transform"></i>
+    </button>
+
+    <aside id="sidebar" class="fixed top-0 left-0 h-full bg-black/80 backdrop-blur-xl border-r border-white/5 z-50 layout-transition -translate-x-full lg:translate-x-0 w-16 sidebar-collapsed overflow-hidden flex flex-col shadow-2xl">
+        
+        <div class="profile-section mt-20 mb-6 px-4 flex flex-col items-center justify-center transition-all duration-300 border-b border-white/5 pb-6">
+            <div class="profile-img-container w-10 h-10 rounded-full border border-blue-500/30 p-0.5 mb-3 shadow-[0_0_15px_rgba(59,130,246,0.2)] shrink-0 transition-all">
+                <img src="../../assets/profile.webp" class="w-full h-full rounded-full object-cover" alt="Profile">
+            </div>
+            <div class="profile-info text-center whitespace-nowrap overflow-hidden">
+                <h2 class="font-bold text-sm tracking-wide text-white">Ahmadi</h2>
+                <p class="text-[9px] text-blue-400 uppercase tracking-widest font-bold">Developer</p>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto px-2 space-y-6 custom-scrollbar">
+            <div>
+                <h3 class="section-header text-[9px] font-bold text-gray-600 uppercase tracking-widest px-3 mb-2">Projects</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="index.html" class="nav-item flex items-center py-2.5 px-3 rounded-lg bg-white/5 border border-white/10 text-white shadow-[0_0_10px_rgba(255,255,255,0.05)] transition-all group">
+                            <i class="fas fa-book w-5 text-center text-blue-400 nav-icon transition-colors text-sm"></i>
+                            <span class="nav-text text-xs font-medium ml-3 whitespace-nowrap">L.M.S</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../ODE/index.html" class="nav-item flex items-center py-2.5 px-3 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/5 text-gray-400 hover:text-white transition-all group">
+                            <i class="fas fa-calculator w-5 text-center group-hover:text-purple-400 nav-icon transition-colors text-sm"></i>
+                            <span class="nav-text text-xs font-medium ml-3 whitespace-nowrap">O.D.E Solver</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../FMS/index.html" class="nav-item flex items-center py-2.5 px-3 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/5 text-gray-400 hover:text-white transition-all group">
+                            <i class="fas fa-plane w-5 text-center group-hover:text-orange-400 nav-icon transition-colors text-sm"></i>
+                            <span class="nav-text text-xs font-medium ml-3 whitespace-nowrap">F.M.S</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../SMS/index.html" class="nav-item flex items-center py-2.5 px-3 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/5 text-gray-400 hover:text-white transition-all group">
+                            <i class="fas fa-graduation-cap w-5 text-center group-hover:text-cyan-400 nav-icon transition-colors text-sm"></i>
+                            <span class="nav-text text-xs font-medium ml-3 whitespace-nowrap">S.M.S</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="section-header text-[9px] font-bold text-gray-600 uppercase tracking-widest px-3 mb-2">System</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="../index.html" class="nav-item flex items-center py-2.5 px-3 rounded-lg hover:bg-red-500/5 hover:text-red-400 border border-transparent hover:border-red-500/10 transition-all group">
+                            <i class="fas fa-power-off w-5 text-center nav-icon text-sm"></i>
+                            <span class="nav-text text-xs font-medium ml-3 whitespace-nowrap">Home</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-white/5 text-center bg-black/20">
+            <p class="section-header text-[8px] text-gray-700 uppercase tracking-wider">&copy; 2026 Ahmadi</p>
+        </div>
+    </aside>
+
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/80 z-40 hidden lg:hidden opacity-0 transition-opacity duration-300"></div>
+
+
+    <div id="content-wrapper">
+        <main id="main-content" class="min-h-screen pt-20 px-4 pb-8 lg:pt-8 lg:pr-8 lg:ml-16 layout-transition flex flex-col w-auto">
+            
+            <div class="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col relative w-full h-auto">
+                
+                <header class="p-6 lg:p-8 border-b border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shrink-0">
+                    <div class="flex items-center gap-4">
+                        <div class="w-15 h-15 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all group" title="icon">
+                            <img src="lms/main_icon.ico" alt="icon">
+                        </div>
+                        
+                        <div>
+                            <h1 class="text-2xl md:text-3xl font-bold">L.M.S Project</h1>
+                            <div class="flex items-center gap-2 mt-2 text-xs text-gray-400">
+                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                <span>v1.2.0 Stable</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-3">
+                        <a href="lms/LMSystem_Setup.rar" download class="flex items-center gap-2 bg-white text-black px-5 py-2 rounded-full hover:bg-gray-200 transition-all text-sm font-bold shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+                            <i class="fas fa-download"></i> Download Setup
+                        </a>
+                        
+                        <a href="https://github.com/sajjadahmadipro/Library_Managment_System" target="_blank" class="flex items-center gap-2 border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all text-sm font-medium">
+                            <i class="fab fa-github"></i> <span class="hidden sm:inline">Repo</span>
+                        </a>
+                    </div>
+                </header>
+
+                <div class="p-6 lg:p-8">
+                    
+                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-12">
+                        
+                        <div class="xl:col-span-2 relative h-64 md:h-80 rounded-2xl overflow-hidden border border-white/10 group shadow-lg">
+                            <img src="../../assets/lms_cover.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="LMS Dashboard">
+                            <div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex items-end p-6">
+                                <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">C++ / Qt Widget</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col justify-center gap-4">
+                            <h3 class="text-lg font-bold text-white"><i class="fas fa-layer-group text-blue-400 mr-2"></i>Tech Stack</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between border-b border-white/5 pb-2">
+                                    <span class="text-gray-400">Core</span>
+                                    <span class="font-mono text-blue-300">C++ (OOP)</span>
+                                </div>
+                                <div class="flex justify-between border-b border-white/5 pb-2">
+                                    <span class="text-gray-400">GUI Framework</span>
+                                    <span class="font-mono text-green-300">Qt Widgets</span>
+                                </div>
+                                <div class="flex justify-between border-b border-white/5 pb-2">
+                                    <span class="text-gray-400">Data</span>
+                                    <span class="font-mono text-yellow-300">CSV / SQLite</span>
+                                </div>
+                                <div class="flex justify-between pb-2">
+                                    <span class="text-gray-400">Architecture</span>
+                                    <span>Layered & Singleton</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="xl:col-span-2 relative overflow-hidden flex flex-col justify-center p-6">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 rounded-full blur-[60px] -z-10"></div>
+                            <h3 class="text-lg font-bold text-white mb-2">Project Overview</h3>
+                            <div class="text-sm text-gray-300 leading-relaxed space-y-2">
+                                <p>
+                                    The <strong>Advanced Library Management System</strong> is a comprehensive software solution designed to modernize traditional bookkeeping. Built with a modular <strong>Object-Oriented</strong> approach, it handles the entire lifecycle of library resources.
+                                </p>
+                                <p class="hidden sm:block">
+                                    The application features a robust <strong>Layered Architecture</strong> ensuring scalability. It supports complex operations like fine calculation, FIFO reservations, and role-based access control.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="xl:col-span-1 bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col justify-center">
+                            <h3 class="text-lg font-bold text-white mb-2">The Goal</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                To create a cross-platform, efficient desktop solution that eliminates manual redundancy in library administration while providing a clean, user-friendly interface for both staff and members.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-12">
+                        <h3 class="text-xl font-bold text-white mb-6 pl-2 border-l-4 border-blue-500 flex items-center gap-2">
+                            App Gallery <span class="text-xs font-normal text-gray-500 uppercase tracking-widest ml-2">(Scroll to view)</span>
+                        </h3>
+                        
+                        <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 custom-scrollbar" style="-webkit-overflow-scrolling: touch;">
+                            
+                            <div class="snap-center shrink-0 w-[85%] md:w-[60%] xl:w-[45%] relative rounded-xl overflow-hidden border border-white/10 aspect-video group shadow-lg">
+                                <img src="lms/login.webp" onerror="this.src='https://placehold.co/600x400/1a1a1a/FFF?text=Login+Screen'" class="w-full h-full object-cover" alt="Login Screen">
+                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                    <span class="text-white font-bold text-lg mb-1">Secure Login</span>
+                                    <span class="text-gray-300 text-xs">Role-based authentication system</span>
+                                </div>
+                            </div>
+                            
+                            <div class="snap-center shrink-0 w-[85%] md:w-[60%] xl:w-[45%] relative rounded-xl overflow-hidden border border-white/10 aspect-video group shadow-lg">
+                                <img src="lms/librarian.webp" onerror="this.src='https://placehold.co/600x400/1a1a1a/FFF?text=Admin+Dashboard'" class="w-full h-full object-cover" alt="Admin Dashboard">
+                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                    <span class="text-white font-bold text-lg mb-1">Librarian Dashboard</span>
+                                    <span class="text-gray-300 text-xs">Real-time statistics and quick actions</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-center shrink-0 w-[85%] md:w-[60%] xl:w-[45%] relative rounded-xl overflow-hidden border border-white/10 aspect-video group shadow-lg">
+                                <img src="lms/book.webp" onerror="this.src='https://placehold.co/600x400/1a1a1a/FFF?text=Book+Management'" class="w-full h-full object-cover" alt="Book Management">
+                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                    <span class="text-white font-bold text-lg mb-1">Inventory Control</span>
+                                    <span class="text-gray-300 text-xs">Add, edit, and manage book availability</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-center shrink-0 w-[85%] md:w-[60%] xl:w-[45%] relative rounded-xl overflow-hidden border border-white/10 aspect-video group shadow-lg">
+                                <img src="lms/reports.webp" onerror="this.src='https://placehold.co/600x400/1a1a1a/FFF?text=Analytics+Reports'" class="w-full h-full object-cover" alt="Analytics">
+                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                    <span class="text-white font-bold text-lg mb-1">Analytics Engine</span>
+                                    <span class="text-gray-300 text-xs">Visual data on borrowing trends</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10">
+                        <h3 class="text-xl font-bold text-white mb-6">Detailed Features</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400 shrink-0">
+                                        <i class="fas fa-id-card"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">Role-Based Access</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            Distinct interfaces for Librarians (Admin) and Members. Admins manage inventory and users, while members can browse, reserve, and view their history.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">Smart Circulation</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            Automated logic checks borrowing limits, calculates due dates based on user type, and automatically applies late fees upon return.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center text-teal-400 shrink-0">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">Advanced Search</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            Full CRUD operations with multi-criteria filtering by title, author, and category for efficient resource discovery.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 shrink-0">
+                                        <i class="fas fa-terminal"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">System Logging</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            Singleton-based logger recording granular events (Debug, Info, Error) for comprehensive system monitoring.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">FIFO Reservations</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            Implements a "First-In-First-Out" queue system for popular books. When a book is returned, the next person in line is automatically notified.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400 shrink-0">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">Visual Analytics</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            A dedicated reporting tab allows admins to generate reports on most popular books, active users, and financial summaries of collected fines.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 shrink-0">
+                                        <i class="fas fa-sitemap"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">Polymorphic Core</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            Extensible OOP architecture handling diverse resource types like Magazines and Reference Books with unique behaviors.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-1">Persistent Data</h4>
+                                        <p class="text-sm text-gray-400 leading-relaxed">
+                                            Reliable CSV storage with automated serialization and configuration via external INI/TOML files.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById("sidebar-toggle");
+            const sidebar = document.getElementById("sidebar");
+            const mainContent = document.getElementById("main-content");
+            const overlay = document.getElementById("mobile-overlay");
+            const toggleIcon = toggleBtn.querySelector("i");
+            const navLinks = document.querySelectorAll('.nav-item');
+
+            const currentPath = window.location.pathname.split("/").pop();
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if(href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    link.classList.remove("bg-white/5", "border-white/10");
+                    link.classList.add("bg-blue-600/20", "border-blue-500/50");
+                    link.querySelector("i").classList.remove("text-gray-400", "text-blue-400");
+                    link.querySelector("i").classList.add("text-blue-400");
+                }
+            });
+
+            let isDesktop = window.innerWidth >= 1024;
+            let desktopExpanded = false; 
+            let mobileOpen = false;
+
+            if(isDesktop) {
+               applyDesktopState();
+            }
+
+            function applyDesktopState() {
+                if (desktopExpanded) {
+                    sidebar.classList.remove("w-16", "sidebar-collapsed");
+                    sidebar.classList.add("w-64", "sidebar-expanded");
+                    mainContent.classList.remove("lg:ml-16");
+                    mainContent.classList.add("lg:ml-64");
+                } else {
+                    sidebar.classList.remove("w-64", "sidebar-expanded");
+                    sidebar.classList.add("w-16", "sidebar-collapsed");
+                    mainContent.classList.remove("lg:ml-64");
+                    mainContent.classList.add("lg:ml-16");
+                }
+            }
+
+            function handleToggle() {
+                isDesktop = window.innerWidth >= 1024;
+                if (isDesktop) {
+                    desktopExpanded = !desktopExpanded;
+                    applyDesktopState();
+                } else {
+                    mobileOpen = !mobileOpen;
+                    if (mobileOpen) {
+                        sidebar.classList.remove("-translate-x-full");
+                        sidebar.classList.remove("w-16", "sidebar-collapsed");
+                        sidebar.classList.add("w-64", "sidebar-expanded");
+                        overlay.classList.remove("hidden");
+                        setTimeout(() => overlay.classList.remove("opacity-0"), 10);
+                        toggleIcon.classList.remove("fa-bars");
+                        toggleIcon.classList.add("fa-arrow-left");
+                    } else {
+                        sidebar.classList.add("-translate-x-full");
+                        overlay.classList.add("opacity-0");
+                        setTimeout(() => overlay.classList.add("hidden"), 300);
+                        toggleIcon.classList.remove("fa-arrow-left");
+                        toggleIcon.classList.add("fa-bars");
+                    }
+                }
+            }
+
+            toggleBtn.addEventListener("click", handleToggle);
+            overlay.addEventListener("click", handleToggle);
+
+            window.addEventListener('resize', () => {
+                const newIsDesktop = window.innerWidth >= 1024;
+                if (newIsDesktop && !isDesktop) {
+                    mobileOpen = false;
+                    sidebar.classList.add("-translate-x-full"); 
+                    overlay.classList.add("hidden", "opacity-0");
+                    toggleIcon.classList.remove("fa-arrow-left");
+                    toggleIcon.classList.add("fa-bars");
+                    sidebar.classList.remove("-translate-x-full");
+                    applyDesktopState();
+                } else if (!newIsDesktop && isDesktop) {
+                    sidebar.classList.add("-translate-x-full");
+                    mainContent.classList.remove("lg:ml-64", "lg:ml-16");
+                    mainContent.style.marginLeft = "0";
+                }
+                isDesktop = newIsDesktop;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Resources/favicon.webp">
+    <script src="analytics.js" defer></script>
+    <style>
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #050505;
+            overflow-x: hidden;
+        }
+        
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.2);
+            z-index: 10;
+        }
+
+        #sidebar { transition: width 0.3s ease, transform 0.3s ease; }
+        
+        .sidebar-collapsed .nav-text { display: none; opacity: 0; }
+        .sidebar-collapsed .section-header { display: none; }
+        .sidebar-collapsed { width: 5rem; }
+
+        .sidebar-expanded { width: 16rem; }
+        .sidebar-expanded .nav-text { display: block; opacity: 1; transition: opacity 0.2s delay 0.1s; }
+
+        #main-content { transition: margin-left 0.3s ease; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    </style>
+</head>
+<body class="text-white selection:bg-white selection:text-black fade-in min-h-screen">
+
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <video autoplay muted loop playsinline poster="Resources/poster.webp" class="w-full h-full object-cover opacity-20 blur-xl">
+            <source src="Resources/DarkMode.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-linear-to-t from-black via-black/80 to-black/40"></div>
+    </div>
+
+    <aside id="sidebar" class="fixed top-0 left-0 h-full bg-[#0a0a0a]/95 backdrop-blur-xl border-r border-white/5 z-50 flex flex-col shadow-2xl transition-all 
+                               -translate-x-full lg:translate-x-0 lg:w-20 sidebar-collapsed">
+        
+        <div class="h-20 hidden lg:flex items-center justify-center border-b border-white/5">
+            <button id="desktop-toggle" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg text-white transition-all">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="h-20 lg:hidden flex items-center justify-end px-6 border-b border-white/5">
+             <span class="text-sm font-bold text-gray-500 mr-auto uppercase tracking-widest">Menu</span>
+             <button id="mobile-close" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg text-white transition-all">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="py-6 flex flex-col items-center border-b border-white/5">
+            <div class="w-10 h-10 rounded-full border border-white/20 p-0.5 mb-2">
+                <img src="../assets/profile.webp" class="w-full h-full rounded-full object-cover grayscale" alt="Profile">
+            </div>
+            <div class="nav-text text-center overflow-hidden whitespace-nowrap">
+                <h3 class="font-bold text-sm">Ahmadi</h3>
+                <p class="text-[10px] text-gray-500">Developer</p>
+            </div>
+        </div>
+
+        <nav class="flex-1 py-6 px-2 space-y-2 overflow-y-auto">
+            
+            <div class="mb-6">
+                <p class="section-header text-[10px] text-gray-500 uppercase tracking-widest px-4 mb-2">Projects</p>
+                
+                <a href="LMS/index.html" class="flex items-center p-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-blue-400 transition-colors group" title="LMS">
+                    <i class="fas fa-book w-6 text-center text-lg"></i>
+                    <span class="nav-text ml-3 text-sm font-medium text-gray-300 group-hover:text-white">L.M.S</span>
+                </a>
+                
+                <a href="ODE/index.html" class="flex items-center p-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-purple-400 transition-colors group" title="ODE Solver">
+                    <i class="fas fa-calculator w-6 text-center text-lg"></i>
+                    <span class="nav-text ml-3 text-sm font-medium text-gray-300 group-hover:text-white">O.D.E Solver</span>
+                </a>
+                
+                <a href="FMS/index.html" class="flex items-center p-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-orange-400 transition-colors group" title="FMS">
+                    <i class="fas fa-plane w-6 text-center text-lg"></i>
+                    <span class="nav-text ml-3 text-sm font-medium text-gray-300 group-hover:text-white">F.M.S</span>
+                </a>
+                
+                <a href="SMS/index.html" class="flex items-center p-3 rounded-xl hover:bg-white/5 text-gray-400 hover:text-cyan-400 transition-colors group" title="SMS">
+                    <i class="fas fa-graduation-cap w-6 text-center text-lg"></i>
+                    <span class="nav-text ml-3 text-sm font-medium text-gray-300 group-hover:text-white">S.M.S</span>
+                </a>
+            </div>
+
+            <div>
+                <p class="section-header text-[10px] text-gray-500 uppercase tracking-widest px-4 mb-2">System</p>
+                
+                <a href="../index.html" class="flex items-center p-3 rounded-xl bg-white/5 border border-white/10 text-white shadow-lg hover:bg-red-500/20 hover:border-red-500/50 hover:text-red-400 transition-all group" title="Home">
+                    <i class="fas fa-power-off w-6 text-center text-lg"></i>
+                    <span class="nav-text ml-3 text-sm font-bold">Home / Exit</span>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="p-4 text-center border-t border-white/5">
+            <p class="text-[9px] text-gray-600">&copy; 2026</p>
+        </div>
+    </aside>
+
+    <header class="lg:hidden fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md border-b border-white/10 z-40 px-4 py-3 flex justify-between items-center">
+        <button id="mobile-toggle" class="w-10 h-10 flex items-center justify-center text-white">
+            <i class="fas fa-bars text-xl"></i>
+        </button> </header>
+
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300 cursor-pointer"></div>
+
+
+    <main id="main-content" class="relative z-10 flex-1 flex flex-col items-center p-6 pt-24 lg:pt-10 lg:ml-20 min-h-screen">
+        
+        <div class="w-full max-w-6xl mb-8 flex justify-between items-end">
+            <div>
+                <h1 class="text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-white to-gray-500">Projects</h1>
+                <p class="text-sm text-gray-400 mt-2">Select a module to access the dashboard.</p>
+            </div>
+        </div>
+
+        <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10">
+
+            <a href="LMS/index.html" class="project-card group relative p-6 rounded-2xl border border-white/5 overflow-hidden h-64 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-[40px] -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors shadow-lg">
+                        <i class="fas fa-book text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded">SYS</span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-blue-200 transition-colors">L.M.S</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2">Learning Management System.</p>
+                </div>
+                <div class="w-full h-1.5 bg-blue-500/80 group-hover:bg-blue-400 rounded-full mt-4 transition-colors"></div>
+            </a>
+
+            <a href="ODE/index.html" class="project-card group relative p-6 rounded-2xl border border-white/5 overflow-hidden h-64 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-[40px] -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors shadow-lg">
+                        <i class="fas fa-calculator text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded">MATH</span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-purple-200 transition-colors">O.D.E</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2">Ordinary Differential Equation Solver.</p>
+                </div>
+                <div class="w-full h-1.5 bg-purple-500/80 group-hover:bg-purple-400 rounded-full mt-4 transition-colors"></div>
+            </a>
+
+            <a href="FMS/index.html" class="project-card group relative p-6 rounded-2xl border border-white/5 overflow-hidden h-64 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-[40px] -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-colors shadow-lg">
+                        <i class="fas fa-plane text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded">AERO</span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-orange-200 transition-colors">F.M.S</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2">Flight Management & Logistics.</p>
+                </div>
+                <div class="w-full h-1.5 bg-orange-500/80 group-hover:bg-orange-400 rounded-full mt-4 transition-colors"></div>
+            </a>
+
+            <a href="SMS/index.html" class="project-card group relative p-6 rounded-2xl border border-white/5 overflow-hidden h-64 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-[40px] -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-colors shadow-lg">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded">DATA</span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-cyan-200 transition-colors">S.M.S</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2">Student Management Database.</p>
+                </div>
+                <div class="w-full h-1.5 bg-cyan-500/80 group-hover:bg-cyan-400 rounded-full mt-4 transition-colors"></div>
+            </a>
+
+            <a href="https://github.com/sajjadahmadipro" target="_blank" class="project-card group relative p-6 rounded-2xl border border-white/5 overflow-hidden h-64 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] -mr-10 -mt-10 opacity-50"></div>
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gray-300 group-hover:bg-white group-hover:text-black transition-colors shadow-lg">
+                        <i class="fab fa-github text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-500 border border-white/10 px-2 py-1 rounded">GIT</span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-1">GitHub</h3>
+                    <p class="text-sm text-gray-400">View source code & repos.</p>
+                </div>
+                <div class="w-full h-1.5 bg-white/30 group-hover:bg-white rounded-full mt-4 transition-colors"></div>
+            </a>
+
+            <div class="project-card group relative p-6 rounded-2xl border border-white/5 border-dashed flex flex-col justify-center items-center h-64 text-center opacity-40 hover:opacity-80 cursor-default">
+                <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-500 mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-400">Coming Soon</h3>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById("sidebar");
+            const desktopToggle = document.getElementById("desktop-toggle");
+            const mobileToggle = document.getElementById("mobile-toggle");
+            const mobileClose = document.getElementById("mobile-close");
+            const mainContent = document.getElementById("main-content");
+            const overlay = document.getElementById("mobile-overlay");
+            
+            let isDesktop = window.innerWidth >= 1024;
+            let desktopExpanded = false;
+
+            desktopToggle.addEventListener('click', () => {
+                desktopExpanded = !desktopExpanded;
+                if(desktopExpanded) {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.style.marginLeft = "16rem";
+                } else {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.style.marginLeft = "5rem";
+                }
+            });
+
+            function openMobileSidebar() {
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.add('sidebar-expanded'); 
+                
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            }
+
+            function closeMobileSidebar() {
+                sidebar.classList.remove('translate-x-0');
+                sidebar.classList.add('-translate-x-full');
+                
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+
+            mobileToggle.addEventListener('click', openMobileSidebar);
+            mobileClose.addEventListener('click', closeMobileSidebar);
+            overlay.addEventListener('click', closeMobileSidebar);
+
+            window.addEventListener('resize', () => {
+                const newIsDesktop = window.innerWidth >= 1024;
+                
+                if(newIsDesktop !== isDesktop) {
+                    isDesktop = newIsDesktop;
+                    if(isDesktop) {
+                        overlay.classList.add('hidden');
+                        sidebar.classList.remove('-translate-x-full');
+                        sidebar.classList.add('translate-x-0');
+                        
+                        sidebar.classList.remove('sidebar-expanded');
+                        sidebar.classList.add('sidebar-collapsed');
+                        mainContent.style.marginLeft = "5rem";
+                        desktopExpanded = false;
+                    } else {
+                        overlay.classList.add('hidden');
+                        sidebar.classList.remove('translate-x-0');
+                        sidebar.classList.add('-translate-x-full');
+                        mainContent.style.marginLeft = "0";
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
