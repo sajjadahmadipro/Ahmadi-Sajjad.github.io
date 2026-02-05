@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxVisible = 3; 
             originalCards.slice(0, maxVisible).forEach(card => {
                 const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true'); 
+                clone.inert = true; 
                 track.appendChild(clone);
             });
 

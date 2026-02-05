@@ -10,17 +10,16 @@
     <link rel="icon" href="assets/favicon.webp">
     <link href="./style.css" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preload" href="assets/fonts/montserrat-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
     <script src="analytics.js" defer></script>
 </head>
 
-<body class="bg-transparent text-white antialiased overflow-x-hidden selection:bg-white selection:text-black font-['Montserrat']">
+<body class="bg-transparent text-white antialiased overflow-x-hidden selection:bg-white selection:text-black font-sans">
     
 <div class="fixed inset-0 w-full h-full z-0 opacity-50 pointer-events-none">
     <video autoplay muted loop id="bg-video" poster="assets/poster.webp" class="hidden md:block object-cover w-full h-full">
-        <source id="background" src="assets/DarkMode.webm" type="video/webm">
+        <source id="background" src="assets/DarkMode.webm" type="video/webm" media="(min-width: 768px)">
     </video>
     
     <div id="video-overlay" class="absolute inset-0 w-full h-full transition-colors duration-500 ease-in-out"></div>
@@ -30,20 +29,20 @@
                 md:text-2xl bg-linear-to-br from-white/10 to-white/0 backdrop-blur-[10px] 
                 supports-backdrop-filter:backdrop-blur-[10px] rounded-b-xl border border-white/20 shadow-white/5 text-white text-shadow-[1px_1px_2px_rgba(0,0,0,0.2)]">
         <a href="#home" class="flex justify-between gap-x-2 cursor-pointer">
-            <img id="img_profile" class="w-9 aspect-square md:w-11 lg:w-8 rounded-full" src="assets/profile.webp" alt="icon">
+            <img id="img_profile" width="100" height="100" class="w-9 aspect-square md:w-11 lg:w-8 rounded-full" src="assets/profile.webp" alt="icon">
             <h2 class="mt-2 md:mt-2">Ahmadi</h2>
         </a>
 
-        <button id="menu-btn" class="lg:hidden text-white focus:outline-none">
+        <button id="menu-btn" aria-label="Open Mobile Menu" class="lg:hidden text-white focus:outline-none">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
 
         <nav class="hidden lg:flex items-center gap-5">
-            <a href="#projects" class="">Projects</a>
+            <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#Qualifications">Qualifications</a>
             <a href="about/index.html" class="">About Me</a>
-            <a href="#contact" class="">Contact</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
@@ -57,11 +56,11 @@
     </nav>
 
     <nav class="fixed top-1/2 right-6 transform -translate-y-1/2 hidden lg:flex flex-col gap-3 z-50">
-        <a href="#home" class="dot active" data-section="home"></a>
-        <a href="#projects" class="dot" data-section="projects"></a>
-        <a href="#skills" class="dot" data-section="skills"></a>
-        <a href="#Qualifications" class="dot" data-section="Qualifications"></a>
-        <a href="#contact" class="dot" data-section="contact"></a>
+        <a href="#home" class="dot active" data-section="home" aria-label="Scroll to Home section"></a>
+        <a href="#projects" class="dot" data-section="projects" aria-label="Scroll to projects section"></a>
+        <a href="#skills" class="dot" data-section="skills" aria-label="Scroll to skills section"></a>
+        <a href="#Qualifications" class="dot" data-section="Qualifications" aria-label="Scroll to Qualifications section"></a>
+        <a href="#contact" class="dot" data-section="contact" aria-label="Scroll to contact section"></a>
     </nav>
 
     <main class="lg:gap-20 flex flex-col justify-between"> 
@@ -71,11 +70,11 @@
                 p-6 lg:p-6 bg-linear-to-br from-white/10 to-transparent backdrop-blur-md rounded-2xl lg:rounded-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all 
                 duration-300 ease-in-out hover:scale-[1.01] hover:border-white/40 fade-in 2xl:scale-120 2xl:hover:scale-100 transform-gpu">
 
-                <img class="hidden lg:block w-96 h-110 lg:h-90 lg:w-80 aspect-square border rounded-2xl border-white/60" src="assets/person.webp" alt="pic">
+                <img width="1000" height="1000" class="hidden lg:block w-96 h-110 lg:h-90 lg:w-80 aspect-square border rounded-2xl border-white/60" src="assets/person.webp" alt="pic">
                 
                 <div class="flex mb-6 mt-[-24px] lg:mt-[-50px] lg:w-101 flex-col opacity-0 translate-y-5 animate-[reveal-section_1s_ease-out_forwards_0.3s]">
                     
-                    <img class="lg:hidden md:mt-3 min-w-[306px] w-[75vw] aspect-square max-w-[589px] object-cover border rounded-2xl border-white/60 mx-auto" src="assets/person.webp" alt="pic">
+                    <img width="1000" height="1000" class="lg:hidden md:mt-3 min-w-[306px] w-[75vw] aspect-square max-w-[589px] object-cover border rounded-2xl border-white/60 mx-auto" src="assets/person.webp" alt="pic">
                     
                     <div class="flex flex-wrap mt-9 items-center gap-2 sm:gap-4 w-full font-serif justify-center min-[400px]:justify-start">
                         <h3 class="text-[2rem] sm:text-5xl md:text-6xl lg:text-3xl font-bold">Hey</h3>
